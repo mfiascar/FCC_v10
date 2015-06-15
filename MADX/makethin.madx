@@ -1,0 +1,269 @@
+call,file="IR_FCC_hh_v0.2.madx";
+call,file="IRCOLL2.madx";
+call,file="fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007.str";
+call,file="fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007.ele";
+call,file="fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007.seq1";
+
+! BEAM
+eg   =  50000.;
+bg   =  eg/pmass;
+en   = 2.2e-06;
+epsx = en/bg;
+epsy = en/bg;
+! ------------------------------------------------------------------
+BEAM, PARTICLE=PROTON, ENERGY=eg, EXN=en*4., EYN=en*4.;
+!-------------------------------------------------------------------
+! MACRO
+call,file="fcc_ring_v10_roundracetrack_lhc_100.12.macro";
+
+! twiss and save tune thick orginal
+select, flag=twiss, column=type,name,s,l,x,y,betx,bety,alfx,alfy,mux,muy,dx,dy;
+seqedit, sequence=FCC_RING; flatten; cycle,start=IPA; endedit;
+use, sequence = FCC_RING;
+! save IPs betas etc
+savebeta, label=tk_IP_D, place=IPD;
+savebeta, label=tk_IP_A, place=IPA;
+savebeta, label=tk_IP_B, place=IPB;
+savebeta, label=tk_IP_F, place=IPF;
+savebeta, label=tk_IP_J, place=IPD;
+savebeta, label=tk_IP_G, place=IPA;
+savebeta, label=tk_IP_H, place=IPB;
+savebeta, label=tk_IP_L, place=IPF;
+twiss, save, centre, file=fcc_ring.twiss;
+!save total tunes THICK and relatives phases
+qxtot_thick = table(summ,Q1);
+qytot_thick = table(summ,Q2);
+
+mux.RA_tmp = table(twiss,E.DS.RA.H1,mux);
+muy.RA_tmp = table(twiss,E.DS.RA.H1,muy);
+mux.RA_thick = mux.RA_tmp - tk_IP_IR->mux;
+muy.RA_thick = muy.RA_tmp - tk_IP_IR->muy;
+mux.LA_tmp = table(twiss,S.DS.LA.H1,mux);
+muy.LA_tmp = table(twiss,S.DS.LA.H1,muy);
+mux.LA_thick = qxtot_thick - mux.LA_tmp ;
+muy.LA_thick = qytot_thick - muy.LA_tmp ;
+mux.RB_tmp = table(twiss,E.DS.RB.H1,mux);
+muy.RB_tmp = table(twiss,E.DS.RB.H1,muy);
+mux.RB_thick = mux.RB_tmp - tk_IP_B->mux;
+muy.RB_thick = muy.RB_tmp - tk_IP_B->muy;
+mux.LB_tmp = table(twiss,S.DS.LB.H1,mux);
+muy.LB_tmp = table(twiss,S.DS.LB.H1,muy);
+mux.LB_thick = tk_IP_B->mux - mux.LB_tmp ;
+muy.LB_thick = tk_IP_B->muy - muy.LB_tmp ;
+
+mux.RF_tmp = table(twiss,E.DS.RF.H1,mux);
+muy.RF_tmp = table(twiss,E.DS.RF.H1,muy);
+mux.RF_thick = mux.RF_tmp - tk_IP_F->mux;
+muy.RF_thick = muy.RF_tmp - tk_IP_F->muy;
+mux.LF_tmp = table(twiss,S.DS.LF.H1,mux);
+muy.LF_tmp = table(twiss,S.DS.LF.H1,muy);
+mux.LF_thick = tk_IP_F->mux - mux.LF_tmp;
+muy.LF_thick = tk_IP_F->muy - muy.LF_tmp;
+
+mux.RD_tmp = table(twiss,E.DS.RD.H1,mux);
+muy.RD_tmp = table(twiss,E.DS.RD.H1,muy);
+mux.RD_thick = mux.RD_tmp - tk_IP_D->mux;
+muy.RD_thick = muy.RD_tmp - tk_IP_D->muy;
+mux.LD_tmp = table(twiss,S.DS.LD.H1,mux);
+muy.LD_tmp = table(twiss,S.DS.LD.H1,muy);
+mux.LD_thick = tk_IP_D->mux - mux.LD_tmp;
+muy.LD_thick = tk_IP_D->muy - muy.LD_tmp;
+value, qxtot_thick, qytot_thick;
+value, mux.LD_thick,mux.RD_thick,mux.LF_thick,mux.RF_thick;
+value, mux.RB_thick,mux.LB_thick,mux.LA_thick,mux.RA_thick;
+value, muy.LD_thick,muy.RD_thick,muy.LF_thick,muy.RF_thick;
+value, muy.RB_thick,muy.LB_thick,muy.LA_thick,muy.RA_thick;
+
+
+! makethin start
+select, flag=makethin, clear;
+! select  ARCS
+nsliceARC=2;
+select, flag=makethin, class=mb,   slice=nsliceARC;
+select, flag=makethin, class=mbds, slice=nsliceARC;
+select, flag=makethin, class=mq,   slice=nsliceARC;
+select, flag=makethin, class=sextupole,   slice=nsliceARC;
+nsliceQINJ=2;
+select, flag=makethin, class=MQDA, slice=nsliceQINJ; 
+select, flag=makethin, class=MQDB, slice=nsliceQINJ;   
+select, flag=makethin, class=MQTL, slice=nsliceQINJ;  
+select, flag=makethin, class=MQT, slice=nsliceQINJ;  
+!! makethin collimation quadrupoles
+nSliceQCOLL=2;
+select, flag=makethin, class=MQ.7L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQTLI.7L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQTLH.F6L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQTLH.E6L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQTLH.D6L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQTLH.C6L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQTLH.B6L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQTLH.A6L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.E5L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.D5L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.C5L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWB.5L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.B5L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.A5L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.E4L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.D4L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.C4L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWB.4L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.B4L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.A4L2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.A4R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.B4R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWB.4R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.C4R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.D4R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.E4R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.A5R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.B5R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWB.5R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.C5R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.D5R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQWA.E5R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQTLH.A6R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQTLH.B6R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQTLH.C6R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQTLH.D6R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQTLH.E6R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQTLH.F6R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQ.7R2.B1, slice=nSliceQCOLL;
+select, flag=makethin, class=MQTLI.7R2.B1, slice=nSliceQCOLL;
+! select IR 
+nSliceBIR = 2;
+select, flag=makethin, class=MBRD.4L.H1B, slice=nSliceBIR;
+select, flag=makethin, class=MBRD.4L.H1A, slice=nSliceBIR;
+select, flag=makethin, class=MBXA.4L.H1B, slice=nSliceBIR;
+select, flag=makethin, class=MBXA.4L.H1A, slice=nSliceBIR;
+select, flag=makethin, class=MBRD.4R.H1B, slice=nSliceBIR;
+select, flag=makethin, class=MBRD.4R.H1A, slice=nSliceBIR;
+select, flag=makethin, class=MBXA.4R.H1B, slice=nSliceBIR;
+select, flag=makethin, class=MBXA.4R.H1A, slice=nSliceBIR;
+select, flag=makethin, class=MCBRDV.4L.H1, slice=nSliceBIR;
+select, flag=makethin, class=MCBRDV.4R.H1, slice=nSliceBIR;
+select, flag=makethin, class=MCBRDH.4L.H1, slice=nSliceBIR;
+select, flag=makethin, class=MCBRDH.4R.H1, slice=nSliceBIR;
+nSliceQIR = 2;
+select, flag=makethin, class=MQ.11L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQ.13R.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQML.6L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQM.9L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQML.8L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQ.13L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQM.9R.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQM.B7R.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQ.12R.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQYL.5L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQML.8R.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQML.10L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQT.13L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQYY.4R.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQMC.9L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQT.12R.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQ.12L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQM.A7R.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQML.10R.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQTLI.11R.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQT.13R.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQMC.9R.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQYL.5R.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQML.6R.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQTLI.11L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQM.A7L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQM.B7L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQYY.4L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQT.12L.H1, slice=nSliceQIR;
+select, flag=makethin, class=MQ.11R.H1, slice=nSliceQIR;
+
+nSliceQX = 4;
+select, flag=makethin, class=MQXC.1R, slice=nSliceQX;
+select, flag=makethin, class=MQXC.3R, slice=nSliceQX;
+select, flag=makethin, class=MQXC.3L, slice=nSliceQX;
+select, flag=makethin, class=MQXD.B2L, slice=nSliceQX;
+select, flag=makethin, class=MQXC.1L, slice=nSliceQX;
+select, flag=makethin, class=MQXD.A2R, slice=nSliceQX;
+select, flag=makethin, class=MQXD.B2R, slice=nSliceQX;
+select, flag=makethin, class=MQXD.A2L, slice=nSliceQX;
+
+exec, tws_selec();
+use, sequence = FCC_RING;
+makethin,sequence= FCC_RING,STYLE=teapot;
+exec, extract_seq();
+
+use, period = CELL_ARC;
+twiss, save, centre, file=cell_thin_nomatch.twiss;
+exec, mat_cell_arc();
+twiss, save, centre, file=cell_thin_match.twiss;
+exec, mat_save_cell_arc();
+
+use, sequence = CELL_LSS;
+seqedit,sequence = CELL_LSS; flatten; endedit;
+exec, mat_cell_lss();
+twiss, save, centre, file=lssd_thin_match.twiss;
+exec, mat_save_cell_lss();
+
+use, sequence = CELL_INJ;
+seqedit,sequence = CELL_INJ; flatten; endedit;
+exec, mat_cell_inj();
+exec, mat_save_cell_inj();
+
+!!!! start matching insertion A
+exec, mat_save_cell_LA();
+exec, mat_save_cell_AB();
+exec, mat_save_IP_A();
+exec, mat_LSS_A(tk,1);
+
+
+use, period = RIGHT_LSS_A;
+twiss, save, centre, betx=1.1,bety=1.1,alfx=0,
+alfy=0,dx=0,dpx=0, file=RIGHT_LSS_A_thin_match.twiss;
+use, period = LEFT_LSS_A;
+twiss, save, centre, betx=1.1,bety=1.1,alfx=0,
+alfy=0,dx=0,dpx=0, file=LEFT_LSS_A_thin_match.twiss;
+
+!!!! start matching insertion B
+exec, mat_save_cell_BC();
+exec, mat_save_IP_B();
+exec, mat_lss_b(tk,1);
+
+!!!! start matching insertion F
+exec, mat_save_cell_EF();
+exec, mat_save_cell_FG();
+exec, mat_save_IP_F();
+exec, mat_lss_f(tk,1);
+
+!!!! start matching insertion D
+exec, mat_save_cell_CD();
+exec, mat_save_cell_DE();
+exec, mat_save_IP_D();
+exec, mat_ess_d(tk,1);
+
+
+exec,save_strength(fcc_ring_thin.tmp);
+
+call,file="fcc_ring_thin.tmp.str";
+
+use, period = FCC_RING;
+
+! match chrom
+match,sequence=FCC_RING;
+vary,name=ksf.h1;
+vary,name=ksd.h1;
+global,DQ1=0.0,DQ2=0.0;
+LMDIF,calls=1000,tolerance=1E-12;
+endmatch;
+
+! save thin sequence
+twiss, save, centre, file=fcc_thin.twiss;
+save,sequence=FCC_RING,file=fcc_ring_thin.seq;
+
+! save thin strenghts
+exec,save_strength(fcc_ring_thin);
+quit;
+
+
+
+
+
+

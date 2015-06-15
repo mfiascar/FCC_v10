@@ -1,0 +1,297 @@
+
+// Version 0.2 of the FCC-hh interaction region
+// 2015-01-16 15:26
+//
+// Roman Martin
+
+//--------------Magnet Strengths-------------------------------------- 
+hcrossing_on := 0;
+vcrossing_on := 0;
+
+angle_MBD2 					:= -4.49101796407186e-04;
+angle_MBD1 					:= 8.98203592814371e-04;
+
+K1_MQM.7L.H1          := -1.97400286347485e-03;
+K1_MQML.6L.H1          := 3.62798e-04;
+K1_MQYL.5L.H1          := -6.77077e-04;
+K1_MQYY.4L.H1          := 6.06198e-04;
+K1_MQXC.3L             := -1.15215e-03;//
+K1_MQXD.B2L            := 1.13594e-03;;//
+K1_MQXD.A2L            := K1_MQXD.B2L;//
+K1_MQXC.1L             := -1.32087e-03;//
+K1_MQXC.1R             := -K1_MQXC.1L;//
+K1_MQXD.A2R            := -K1_MQXD.B2L;//
+K1_MQXD.B2R            := -K1_MQXD.B2L;//
+K1_MQXC.3R             := -K1_MQXC.3L;//
+K1_MQYY.4R.H1          := -6.06198e-04;//
+K1_MQYL.5R.H1          := 6.77077e-04;//
+K1_MQML.6R.H1          := -3.46751e-04;
+K1_MQM.7R.H1          := 2.11020758791024e-03;
+
+/* // for beta star = 0.3 m
+HKICK_MCBRDH.4L.H1     := -2.92636888250107e-05*hcrossing_on;
+HKICK_MCBXCH.3L        := 2.14963801621507e-05*hcrossing_on;
+HKICK_MCBXDH.A2L       := 6.67656556653254e-07*hcrossing_on;
+HKICK_MCBXDH.A2R       := -HKICK_MCBXDH.A2L;
+HKICK_MCBXCH.3R        := -HKICK_MCBXCH.3L;
+HKICK_MCBRDH.4R.H1     := 4.70246571574395e-05*hcrossing_on;
+
+VKICK_MCBRDV.4L.H1     := -4.55420498390418e-05*vcrossing_on;
+VKICK_MCBXCV.3L        := 1.99584878956291e-05*vcrossing_on;
+VKICK_MCBXDV.A2L       := 1.24257914521224e-06*vcrossing_on;
+VKICK_MCBXDV.A2R       := -VKICK_MCBXDV.A2L;
+VKICK_MCBXCV.3R       := -VKICK_MCBXCV.3L;
+VKICK_MCBRDV.4R.H1     := 2.83358725181520e-05*vcrossing_on;
+*/
+
+// for beta star = 1.1 m
+HKICK_MCBRDH.4L.H1     := -1.52824619585706e-05*hcrossing_on;
+HKICK_MCBXCH.3L        := 1.12261159405032e-05*hcrossing_on;
+HKICK_MCBXDH.A2L       := 3.48673548092199e-07*hcrossing_on;
+HKICK_MCBXDH.A2R       := -HKICK_MCBXDH.A2L;
+HKICK_MCBXCH.3R        := -HKICK_MCBXCH.3L;
+HKICK_MCBRDH.4R.H1     := 2.45578239260427e-05*hcrossing_on;
+
+VKICK_MCBRDV.4L.H1     := -2.37835598494911e-05*vcrossing_on;
+VKICK_MCBXCV.3L        := 1.04229803668365e-05*vcrossing_on;
+VKICK_MCBXDV.A2L       := 6.48915795861207e-07*vcrossing_on;
+VKICK_MCBXDV.A2R       := -VKICK_MCBXDV.A2L;
+VKICK_MCBXCV.3R       := -VKICK_MCBXCV.3L;
+VKICK_MCBRDV.4R.H1     := 1.47979268020132e-05*vcrossing_on;
+
+//--------------DIPOLES----------------------------------------------- 
+
+MBRD.4L.H1B :        	SBEND, 	 L:=15,      		ANGLE:=-angle_MBD1;!*hcrossing_on;
+MBRD.4L.H1A :        	SBEND, 	 L:=15,      		ANGLE:=-angle_MBD1;!*hcrossing_on;
+
+MBXA.4L.H1B :          SBEND, 	 L:=12.5,        	ANGLE:=angle_MBD1;!*hcrossing_on;
+MBXA.4L.H1A :          SBEND, 	 L:=12.5,        	ANGLE:=angle_MBD1;!*hcrossing_on;
+
+MBXA.4R.H1A :          SBEND, 	 L:=12.5,        	ANGLE:=-angle_MBD1;!*hcrossing_on;
+MBXA.4R.H1B :          SBEND, 	 L:=12.5,        	ANGLE:=-angle_MBD1;!*hcrossing_on;
+
+MBRD.4R.H1A :        	SBEND, 	 L:=15,          ANGLE:=angle_MBD1;!*hcrossing_on;
+MBRD.4R.H1B :        	SBEND, 	 L:=15,          ANGLE:=angle_MBD1;!*hcrossing_on;
+
+//--------------DRIFTS------------------------------------------------
+
+DX.1L			:  DRIFT, L=36.0;
+DX.2L			:  DRIFT, L=3.01;
+DX.3L			:  DRIFT, L=4.11;
+DX.4L			:  DRIFT, L=3.83;
+DX.5L			:  DRIFT, L=7.12;
+DX.6L			:  DRIFT, L=15.128;
+DX.7L			:  DRIFT, L=7.958;
+
+DY.8L			:  DRIFT, L=1.5;
+DY.9L			:  DRIFT, L=54.55;
+DY.10L		:  DRIFT, L=1.5;
+DY.11L.H1		:  DRIFT, L=31.894;
+DY.12L.H1		:  DRIFT, L=0.8;
+DY.13L.H1		:  DRIFT, L=32.306;
+
+DM.14L.H1		:  DRIFT, L=67.674;
+DM.15L.H1		:  DRIFT, L=32.200;
+DM.16L.H1		:  DRIFT, L=58.428;
+DM.17L.H1		:  DRIFT, L=0.734;
+DM.18L.H1		:  DRIFT, L=3.4660;
+
+DX.1R			:  DRIFT, L=36.0;
+DX.2R			:  DRIFT, L=3.01;
+DX.3R			:  DRIFT, L=4.11;
+DX.4R			:  DRIFT, L=3.83;
+DX.5R			:  DRIFT, L=7.12;
+DX.6R			:  DRIFT, L=15.128;
+DX.7R			:  DRIFT, L=7.958;
+
+DY.8R			:  DRIFT, L=1.5;
+DY.9R			:  DRIFT, L=54.55;
+DY.10R		:  DRIFT, L=1.5;
+DY.11R.H1		:  DRIFT, L=31.894;
+DY.12R.H1		:  DRIFT, L=0.8;
+DY.13R.H1		:  DRIFT, L=32.306;
+
+DM.14R.H1		:  DRIFT, L=67.674;
+DM.15R.H1		:  DRIFT, L=32.200;
+DM.16R.H1		:  DRIFT, L=58.428;
+DM.17R.H1		:  DRIFT, L=0.734;
+DM.18R.H1		:  DRIFT, L=3.4660;
+
+//--------------QUADRUPOLES------------------------------------------- 
+MQM.7L.H1 :         QUADRUPOLE, 	 L:=6.8,                 K1:=K1_MQM.7L.H1;
+MQML.6L.H1 :        QUADRUPOLE, 	 L:=9.6,                 K1:=K1_MQML.6L.H1;
+MQYL.5L.H1 :        QUADRUPOLE, 	 L:=9.6,                 K1:=K1_MQYL.5L.H1;
+MQYY.4L.H1 :        QUADRUPOLE, 	 L:=6.8,                 K1:=K1_MQYY.4L.H1;
+MQSX.3L :           QUADRUPOLE, 	 L:=1.34,                K1:=K1_MQSX.3L;
+MQXC.3L :           QUADRUPOLE, 	 L:=20,               K1:=K1_MQXC.3L;
+MQXD.B2L :          QUADRUPOLE, 	 L:=17.5,              K1:=K1_MQXD.B2L;
+MQXD.A2L :          QUADRUPOLE, 	 L:=17.5,              K1:=K1_MQXD.A2L;
+MQXC.1L :           QUADRUPOLE, 	 L:=20,               K1:=K1_MQXC.1L;
+MQXC.1R :           QUADRUPOLE, 	 L:=20,               K1:=K1_MQXC.1R;
+MQXD.A2R :          QUADRUPOLE, 	 L:=17.5,              K1:=K1_MQXD.A2R;
+MQXD.B2R :          QUADRUPOLE, 	 L:=17.5,              K1:=K1_MQXD.B2R;
+MQXC.3R :           QUADRUPOLE, 	 L:=20,               K1:=K1_MQXC.3R;
+MQSX.3R :           QUADRUPOLE, 	 L:=1.34,                K1:=K1_MQSX.3R;
+MQYY.4R.H1 :        QUADRUPOLE, 	 L:=6.8,                 K1:=K1_MQYY.4R.H1;
+MQYL.5R.H1 :        QUADRUPOLE, 	 L:=9.6,                 K1:=K1_MQYL.5R.H1;
+MQML.6R.H1 :        QUADRUPOLE, 	 L:=9.6,                 K1:=K1_MQML.6R.H1;
+MQM.7R.H1 :         QUADRUPOLE, 	 L:=6.8,                 K1:=K1_MQM.7R.H1;
+
+MQM.A7R.H1 : MQM.7R.H1;
+MQM.B7R.H1 : MQM.7R.H1;
+MQM.A7L.H1 : MQM.7L.H1;
+MQM.B7L.H1 : MQM.7L.H1;
+
+//--------------KICKER MAGNETS---------------------------------------- 
+
+MCBRDH.4L.H1 :      HKICKER, 	 L:=3.0,                 HKICK:=HKICK_MCBRDH.4L.H1;
+MCBXCH.3L.H1 :         HKICKER, 	 L:=0.0,                 HKICK:=HKICK_MCBXCH.3L;
+MCBXDH.A2L.H1 :        HKICKER, 	 L:=0.0,                 HKICK:=HKICK_MCBXDH.A2L;
+MCBXDH.A2R.H1 :        HKICKER, 	 L:=0.0,                 HKICK:=HKICK_MCBXDH.A2R;
+MCBXCH.3R.H1 :         HKICKER, 	 L:=0.0,                 HKICK:=HKICK_MCBXCH.3R;
+MCBRDH.4R.H1 :      HKICKER, 	 L:=3.0,                 HKICK:=HKICK_MCBRDH.4R.H1;
+
+MCBRDV.4L.H1 :      VKICKER, 	 L:=3.0,                 VKICK:=VKICK_MCBRDV.4L.H1;
+MCBXCV.3L.H1 :         VKICKER, 	 L:=0.0,                 VKICK:=VKICK_MCBXCV.3L;
+MCBXDV.A2L.H1 :        VKICKER, 	 L:=0.0,                 VKICK:=VKICK_MCBXDV.A2L;
+MCBXDV.A2R.H1 :        VKICKER, 	 L:=0.0,                 VKICK:=VKICK_MCBXDV.A2R;
+MCBXCV.3R.H1 :         VKICKER, 	 L:=0.0,                 VKICK:=VKICK_MCBXCV.3R;
+MCBRDV.4R.H1 :      VKICKER, 	 L:=3.0,                 VKICK:=VKICK_MCBRDV.4R.H1;
+
+//--------------Markers and Monitors---------------------------------- 
+
+IP :              MARKER;
+E.IR.R	:			MARKER;
+E.IR.L	:			MARKER;
+
+
+//--------------Apertures--------------------------------------------- 
+
+
+MBRD.4L.H1B         		APERTYPE = CIRCLE, 	APERTURE={0.020};
+MBRD.4L.H1A         		APERTYPE = CIRCLE, 	APERTURE={0.027};
+MBXA.4L.H1B,            APERTYPE = CIRCLE, 	APERTURE={0.045};
+MBXA.4L.H1A,            APERTYPE = CIRCLE, 	APERTURE={0.030};
+MQXC.3L,            	APERTYPE = CIRCLE, 	APERTURE={0.0320};
+MQXD.B2L,           	APERTYPE = CIRCLE, 	APERTURE={0.0320};
+MQXD.A2L,           	APERTYPE = CIRCLE, 	APERTURE={0.0310};
+MQXC.1L,            	APERTYPE = CIRCLE, 	APERTURE={0.020};
+MQXC.1R,            	APERTYPE = CIRCLE, 	APERTURE={0.020};
+MQXD.A2R,           	APERTYPE = CIRCLE, 	APERTURE={0.0310};
+MQXD.B2R,           	APERTYPE = CIRCLE, 	APERTURE={0.0320};
+MQXC.3R,            	APERTYPE = CIRCLE, 	APERTURE={0.0320};
+MBXA.4R.H1A,           	APERTYPE = CIRCLE, 	APERTURE={0.030};
+MBXA.4R.H1B,           	APERTYPE = CIRCLE, 	APERTURE={0.045};
+MBRD.4R.H1A,         	APERTYPE = CIRCLE, 	APERTURE={0.027};
+MBRD.4R.H1B,         	APERTYPE = CIRCLE, 	APERTURE={0.020};
+
+
+
+
+//********************************************************************//
+//* 	 	  IR_FCC_hh - LINE 	 	 *//
+//********************************************************************//
+
+//-------TRIPLET-----------------------------------------
+RIGHT_TRIPLET : LINE=(
+	IP,
+	DX.1L,
+	MQXC.1R,
+	DX.2L,
+	MCBXDH.A2R.H1,
+	MCBXDV.A2R.H1,
+	DX.3L,
+	MQXD.A2R,
+	DX.4L,
+	MQXD.B2R,
+	DX.5L,
+	MQXC.3R,
+	DX.6L,
+	MCBXCH.3R.H1,
+	MCBXCV.3R.H1,
+	DX.7L
+);
+LEFT_TRIPLET : LINE=(
+	IP,
+	DX.1L,
+	MQXC.1L,
+	DX.2L,
+	MCBXDH.A2L.H1,
+	MCBXDV.A2L.H1,
+	DX.3L,
+	MQXD.A2L,
+	DX.4L,
+	MQXD.B2L,
+	DX.5L,
+	MQXC.3L,
+	DX.6L,
+	MCBXCH.3L.H1,
+	MCBXCV.3L.H1,
+	DX.7L
+);
+
+//------BEAM SEPARATION/RECOMBINATION--------------------------
+RIGHT_SEPARATION : LINE=(
+	MBXA.4R.H1A,
+	DY.8R,
+	MBXA.4R.H1B,
+	DY.9R,
+	MBRD.4R.H1A,
+	DY.10R,
+	MBRD.4R.H1B,
+	DY.11R.H1,
+	MCBRDH.4R.H1,
+	DY.12R.H1,
+	MCBRDV.4R.H1,
+	DY.13R.H1,
+);
+LEFT_SEPARATION : LINE=(
+	MBXA.4L.H1A,
+	DY.8L,
+	MBXA.4L.H1B,
+	DY.9L,
+	MBRD.4L.H1A,
+	DY.10L,
+	MBRD.4L.H1B,
+	DY.11L.H1,
+	MCBRDH.4L.H1,
+	DY.12L.H1,
+	MCBRDV.4L.H1,
+	DY.13L.H1,
+);
+
+//------MATCHING SECTION----------------------------------
+RIGHT_MS : LINE=(
+	MQYY.4R.H1,
+	DM.14R.H1,
+	MQYL.5R.H1,
+	DM.15R.H1,
+	MQML.6R.H1,
+	DM.16R.H1,
+	MQM.A7R.H1,
+	DM.17R.H1,
+	MQM.B7R.H1,
+	!DM.18R.H1,
+	E.IR.R
+);
+
+LEFT_MS : LINE=(
+	MQYY.4L.H1,
+	DM.14L.H1,
+	MQYL.5L.H1,
+	DM.15L.H1,
+	MQML.6L.H1,
+	DM.16L.H1,
+	MQM.A7L.H1,
+	DM.17L.H1,
+	MQM.B7L.H1,
+	!DM.18L.H1,
+	E.IR.L
+);
+
+
+RIGHT_IR : LINE=(RIGHT_TRIPLET,RIGHT_SEPARATION,RIGHT_MS);
+LEFT_IR : LINE=(LEFT_TRIPLET,LEFT_SEPARATION,LEFT_MS);
+
+IR_FCC_hh : LINE=(-LEFT_IR,RIGHT_IR);
+

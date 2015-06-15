@@ -1,0 +1,42 @@
+SET, FORMAT="12d", "20.12g", "-18s";
+TITLE,fcc_ring_v4_roundracetrack_lhc_100.12_14.3 37 long arc cells;
+OPTION, RBARC=false, WARN,-INFO,-ECHO;
+BEAM, PARTICLE=PROTON, ENERGY=50000.0, EXN=2.2e-06*4., EYN=2.2e-06*4.;
+
+!**********************************************************************
+call,file="fcc_ring_thin.withds.v1.0.seq";
+call,file="fcc_ring_thin.withds.v1.0.str";
+!**********************************************************************
+
+!------FOR STUDY OF SINGLE PASS DISPERSION------------
+!use,sequence=FCC_RING;
+!twiss,  sequence=FCC_RING, file=twiss_fcc_b1_med_new_thin.tfs; save;
+
+! betxTCP=table(twiss,TCP.D6L2.B1,betx);
+! alfxTCP=table(twiss,TCP.D6L2.B1,alfx);
+! betyTCP=table(twiss,TCP.D6L2.B1,bety);
+! alfyTCP=table(twiss,TCP.D6L2.B1,alfy);
+
+!value,betxTCP,alfxTCP,betyTCP,alfyTCP;
+
+! seqedit, sequence=FCC_RING;
+!   flatten;
+!   cycle, start=TCP.D6L2.B1;
+! endedit;
+
+! use,    period=FCC_RING;
+! select, flag=twiss, clear;
+! select, flag=twiss, column=KEYWORD,NAME,S,L,X,Y,BETX,BETY,ALFX,ALFY,MUX,MUY,DX,DY,DPX,DPY,PX,PY;
+! twiss,  betx=betxTCP, bety=betyTCP,  alfx=alfxTCP ,alfy=alfyTCP, dx=0, dy=0, dpx=0,dpy=0, sequence=FCC_RING, file=Twiss_fcc_b1_study_disp.dat, save;
+!----------------------------------
+
+
+USE, SEQUENCE=FCC_RING;
+select, flag=twiss, clear;
+select, flag=twiss, column=keyword,name,s,l,betx,bety,mux,muy,dx,dpx,x,px,y,py,dy,k0l,k1l;
+twiss,  sequence=FCC_RING, file="twiss_fcc_ring_thin.withds.v1.0.tfs", save;
+ 
+USE, SEQUENCE=FCC_RING;
+ sixtrack, radius=17E-03;
+ 
+ system, "mv fc.2 fort.2--B1--withds.v1.0";

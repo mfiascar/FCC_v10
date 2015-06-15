@@ -1,0 +1,38 @@
+! RB: install a new pair of TCTs between D1 and D2 in IR1 and IR3 
+
+ tct:rcollimator,l:=0.0;
+
+ seqedit,sequence=FCC_RING;
+   flatten;
+ endedit;
+
+ 
+! TCTs IR1
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ 
+! D2 ends at 97078.86, D1 starts at 97160.32, IP1 at 97314.56227
+! assume 70 cm between TCTs =>
+! 	 TCTV ends at 97118.7
+! 	 center of TCTV at 97118.2
+! 	 center of TCTH at 97116.5
+
+ seqedit,sequence=FCC_RING;
+   install,element=tcth.4l1.b1, class= tct,at=  97116.5;  
+   install,element=tctva.4l1.b1, class= tct,at=  97118.2;
+ endedit;
+ 
+
+! TCTs IR3
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ 
+! D2 ends at 48421.6 , D1 starts at 48480.7, IP3 at 48657.28113
+! assume 70 cm between TCTs =>
+! 	 TCTV ends at 48461.5 
+! 	 center of TCTV at 48461.0
+! 	 center of TCTH at 48459.3
+
+ seqedit,sequence=FCC_RING;
+   install,element=tcth.4l3.b1, class= tct,at= 48459.3; 
+   install,element=tctva.4l3.b1, class= tct,at= 48461.0; 
+ endedit;
+ 

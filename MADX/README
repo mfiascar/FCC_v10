@@ -1,0 +1,159 @@
+********************************************************************
+SCRIPTS to generate INPUT FILES for SIMULATIONS:
+* fort.2 to run SixTrack
+* Aperture model and survey files to run BeamLossPattern
+********************************************************************
+
+
+* Original input lattice files from Barbara Dalena (dalena.barbara@gmail.com), 13 April 2015:
+/afs/cern.ch/user/d/dalena/public/fcc/optics/LATTICE_V10/
+
+Note: the official repository is here:
+http://fccr.web.cern.ch/FCCr/hh/LATTICE_V4/Baseline/
+The version v4 in the official repository has the same optics as v10 from Barbara, the only difference is the matching with the IR. We chose Barbara's version because the dispersion function in the DS is more efficient for adding TCLDs - ie. Dx has a peak just after the betatron collimation.
+
+---------------------------------------------------------
+---------------------------------------------------------
+
+SixTrack studies with thin sequence - how to produce fort.2:
+
+---------------------------------------------------------
+
+0) edit these few lines in IRCOLL2.madx:
+
+TCP.D6L2.B1 : MARKER;
+TCP.C6L2.B1 : MARKER;
+TCP.B6L2.B1 : MARKER;
+TCP.A6L2.B1 : MARKER;
+
+They should instead be:
+
+TCP.D6L2.B1 : RCOLLIMATOR, l=0; 
+TCP.C6L2.B1 : RCOLLIMATOR, l=0; 
+TCP.B6L2.B1 : RCOLLIMATOR, l=0;  
+TCP.A6L2.B1 : RCOLLIMATOR, l=0; 
+
+
+1) Run:
+
+> madx makethin.madx
+
+This produces fcc_ring_thin.seq, fcc_ring_thin.str  
+
+2) Edit fcc_ring_thin.seq:
+
+- to be able to run the collimation routine in SixTrack, we need to include an RF. This is done by adding the following lines to the sequence file:
+
+Just before the line "fcc_ring: sequence, l = 97314.56227;" insert:
+rfv=16;
+rfc:rfcavity,L=1,lag=0.5,volt:=rfv,harmon=136227;
+
+Then somewhere in the sequence you have to add the rfc, eg:
+rfc, at = 7139.0;
+
+
+- since the collimation sequence is included twice, in IR2 and IR4, I remove all collimators in IR4 to avoid confusion (perhaps not needed?), since the names are identical to those in IR2. 
+ie, remove these lines for the TCPs:
+tcp.d6l2.b1, at = 71961.0317;
+tcp.c6l2.b1, at = 71971.0317;
+tcp.b6l2.b1, at = 71981.0317;
+tcp.a6l2.b1, at = 71991.0317;
+
+and similary remove all TCSGs and TCLAs around s=70000:
+tcsg.b5l2.b1, at = 72474.6417;
+....
+tcla.a6r2.b1, at = 73755.5567;
+....
+
+
+3) Produce the SixTrack input file (fort.2) running
+
+> madx main_job.thin.madx
+
+
+* For simulations with the TCTs re-run 3) with:
+> madx main_job.thin.withTCTs.madx
+
+* For simulations with the TCLDs, I have rerun 1-3 for different versions:
+- makethin.withDScoll.v1.0.madx, main_job.thin.withDS.v1.0.madx: adds one TCLD at the end of cell 8 
+- makethin.withDScoll.v1.1.madx, main_job.thin.withDS.v1.1.madx: adds one TCLD at the beginning of cell 9
+- makethin.withDScoll.v1.2.madx, main_job.thin.withDS.v1.2.madx: adds one TCLD at the end of cell 9
+- makethin.withDScoll.v2.0.madx, main_job.thin.withDS.v2.0.madx: adds two TCLDs, in cells 8 and 10
+- makethin.withDScoll.v2.1.madx, main_job.thin.withDS.v2.1.madx: adds two TCLDs, in cells 9 and 11
+
+
+---------------------------------------------------------
+---------------------------------------------------------
+
+Aperture: how to produce aperture file used as input for BeamLossPattern
+
+---------------------------------------------------------
+
+1) Run
+> madx fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007.aperture.madx
+
+This produces the output "twiss_aperture_thick_b1.tfs"
+
+Note: the apertures are defined in the following files
+- call,file="aperture.arc.b1.madx"; --> for arc and DS
+- call,file="aperture.b1.madx"; --> for collimation IR and matching sections
+- the triplet aperture is defined inside "IR_FCC_hh_v0.2.madx" (input from Roman Martin)
+
+Assumptions for the current aperture model:
+- At the moment, for the arc we assume a beam screen with dimensions 16 mm (w) and 13 mm (h).
+  Note that both "aperture.arc.b1.madx" and "aperture.b1.madx" have apertures that depend on the beam screen.
+- Matching section and collimation IR: same absolute aperture as in the LHC, with these exception
+  * BPMs in collimation IR: arc (w) + 2 mm --> 18 mm
+  * some elements that in the LHC had an aperture very similar to the arc (ie. arc + 0.0005) have also been set in the same way: arc aperture + 0.0005
+
+2) Run:
+
+> python edit_twiss.py
+
+This produces the file "allapert_final.b1" which can be used as input for BeamLossPattern.
+
+The edit_twiss.py script does the following:
+- converts apertures of type "circle" to a format that is accepted by BeamLossPattern.
+- adds some apertures to the model to make it more realistic:
+  * matching sections in IRs: add markers 20 cm before/after each element with aperture = drift_aperture (set to 40 mm now). This is done to avoid long drifts without an aperture definition 
+  * BMPs in the arcs: no BPMs are present in the lattice (except for the collimation insertions). BMPs are added in the DS regions and in the ARCs before each quadrupole. The aperture is set to BPM_aperture (now 18 mm, ie. arc aperture + 2mm) and the lenght of the BMPs is set to BPM_lenght (now 30 cm).
+- give an aperture to the last point of the ring: to make sure the aperture is defined for the whole ring lenght, the last marker ("FCC_RING$END") is assigned an aperture equal to the arc ones. Without this BeamLossPattern was giving an error and not running.
+
+
+----------------------------------------------------------------------------------
+---------------------------------------------------------
+
+More checks on aperture
+
+---------------------------------------------------------
+
+To check the aperture model, as it is used in BeamLossPattern, one can use the tools described in this talk:
+https://indico.cern.ch/event/400329/contribution/2/material/slides/0.pdf
+
+The package with all the scripts (including one created on purpose for the FCC) is here:
+https://github.com/mfiascar/allapert_generator/tree/adding_markers
+
+You can first create an aperture file with resolution 10cm, starting from allapert_final.b1 using the program GetAperture:
+./$PATH/bin/GetAperture allapert_final.b1
+mv LHCAperture.dat FCCAperture.b1.dat
+
+And then you can plot the aperture in x and y in several parts of the machine by running the script:
+python $PATH/scripts/plot_allapert_FCC.py
+
+
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+
+Survey file for BeamLossPattern
+
+-------------------------------------------------------------------------------------
+
+In order to run BeamLossPattern one also needs, in addition to the aperture model, a survey file.
+For the moment we don't need a survey file (we can assume the beam is in the centre of the aperture), so we create a dummy survey file which has the same granularity of the aperture model (10 cm), but is zero for each point.
+
+To create this just run:
+python make_dummy_Survey.py
+
+Note that you need as input the file FCCAperture.b1.dat (created with GetAperture), to define the s-position of each point.
+
+

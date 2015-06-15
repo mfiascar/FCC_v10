@@ -1,0 +1,56 @@
+SET, FORMAT="12d", "20.12g", "-18s";
+TITLE,fcc_ring_v10_roundracetrack_lhc_100.12_14.3 37 long arc cells;
+OPTION, RBARC=false, WARN,-INFO,-ECHO;
+BEAM, PARTICLE=PROTON, ENERGY=50000.0, EXN=2.2e-06, EYN=2.2e-06;
+
+!**********************************************************************
+call,file="IR_FCC_hh_v0.2.madx";
+call,file="IRCOLL2.madx";
+call,file="fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007.str";
+call,file="fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007.ele";
+call,file="fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007.seq";
+call,file="fcc_ring_v10_roundracetrack_lhc_100.12.macro";
+exec,extract_seq();
+call,file="fcc_ring_v10_roundracetrack_lhc_100.12.mat";
+!**********************************************************************
+
+!**********************************************************************
+exec,tws_selec();
+exec,mat_save_cell_arc();
+exec,mat_save_cell_AB();
+exec,mat_save_cell_BC();
+exec,mat_save_cell_CD();
+exec,mat_save_cell_DE();
+exec,mat_save_cell_EF();
+exec,mat_save_cell_FG();
+exec,mat_save_cell_GH();
+exec,mat_save_cell_HI();
+exec,mat_save_cell_IJ();
+exec,mat_save_cell_JK();
+exec,mat_save_cell_KL();
+exec,mat_save_cell_LA();
+exec,plt_cell_arc("fcc v10 L=14.3 m B=15.90 T Lcell=214.755 m",fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007);
+exec, plt_LSS_A("fcc v10 L=14.3 m B=15.90 T Lcell=214.755 m",fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007);
+exec, plt_LSS_B("fcc v10 L=14.3 m B=15.90 T Lcell=214.755 m",fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007);
+exec, plt_ESS_D("fcc v10 L=14.3 m B=15.90 T Lcell=214.755 m",fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007);
+exec, plt_LSS_F("fcc v10 L=14.3 m B=15.90 T Lcell=214.755 m",fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007);
+exec, plt_LSS_G("fcc v10 L=14.3 m B=15.90 T Lcell=214.755 m",fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007);
+exec, plt_LSS_H("fcc v10 L=14.3 m B=15.90 T Lcell=214.755 m",fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007);
+exec, plt_ESS_J("fcc v10 L=14.3 m B=15.90 T Lcell=214.755 m",fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007);
+exec, plt_LSS_L("fcc v10 L=14.3 m B=15.90 T Lcell=214.755 m",fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007);
+exec,plt_FCC_RING("fcc v10 L=14.3 m B=15.90 T Lcell=214.755 m",fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007);
+!**********************************************************************
+
+USE, SEQUENCE=FCC_RING;
+SELECT,FLAG=SURVEY,clear;
+SELECT,FLAG=SURVEY,column=name,s,l,x,y,z,angle,theta;
+SURVEY,FILE="fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007_ring.svy";
+save,sequence=FCC_RING,
+file="fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007.seq1",bare;
+!call,file="fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007.seq1";
+!seqedit, sequence=FCC_RING;
+!flatten;
+!cycle,start=LSS.A.IP;
+!endedit;
+!**********************************************************************
+exec, save_strength(fcc_ring_v10_roundracetrack_lhc_100.12_14.3_007);

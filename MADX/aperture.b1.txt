@@ -1,0 +1,55 @@
+IPA || LHC: IP1 circle 0.029 
+    || LHC: TAS
+MQXC, MQXD: triplets || LHC:  MQXA (Q1, Q3),         APERTYPE=RECTELLIPSE, APERTURE={ 0.018950,    0.023850,    0.023850,  0.023850 };
+      	    	     || LHC:  MQXB (Q2),             APERTYPE=RECTELLIPSE, APERTURE={ 0.024000,    0.028900,    0.028900,  0.028900 };
+MCBXDH, MCBXDV: orbit correctors || LHC: same aperture as triplets just before 
+MCBXCH, MCBXCV: orbit correctors || LHC: same aperture as triplets
+MBXA: D1 || LHC: MBXW ,        APERTYPE=RECTELLIPSE, APERTURE={ 0.064000,    0.026500,    0.064000,  0.026500 };
+MBRD: D2 || LHC: MBRC,         APERTYPE=RECTELLIPSE, APERTURE={ 0.031300,    0.026400,    0.031300,  0.031300 };
+MCBRDH, MCBRDV: dipole orbit corrector? (DS and matching section?) || LHC (?) MCBYV,    APERTYPE=RECTELLIPSE, APERTURE={ 0.028900,    0.024000,    0.028900,  0.028900 };
+MQM, MQY: SC quadrupoles in DS and matching sections (MQY: wide-aperture quadrupoles) || MQY.4R1.B1,       APERTYPE=RECTELLIPSE, APERTURE={ 0.028900,    0.024000,    0.028900,  0.028900 };
+
+MQYY
+MQYL
+MQML
+MQM || LHC: MQM different apertures
+------------------- E.IR.R,S.DS.RA.H1------------
+MBDS: dipoles in DS
+MQDA, MQDB: quadrupoles in DS
+MQTL: DS trim quadruploes
+MQ
+MB
+MQT ?
+MS
+
+LHC: in DS all elements (MQ, MB, MQM...) have aperture APERTURE={ 0.022000,    0.017150,    0.022000,  0.022000 }; 
+except for  BPMs at  0.024000      0.024000      0.024000      0.024000
+DRIFTS: 0.040000      0.040000      0.040000      0.040000
+------------------- E.DS.RA.H1 ------------
+MB
+MQ
+MS
+------------------ S.CELL.AB.H1 -----------
+MQ
+MB
+MS
+------------------E.CELL.AB.H1 -------------
+MB
+MQ
+MS
+------------------S.DS.LB.H1-------------
+MQT
+MS
+MB
+MQTL
+MBDS
+MQDB
+MQDA
+------------------E.DS.LB.H1, LSS_B.S-------------
+MQ
+------------------S.INJ_B, E.INJ_B---------------
+MQ.A1
+MQ.B1
+----------------
+IPB
+MQ

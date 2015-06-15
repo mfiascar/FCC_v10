@@ -1,0 +1,73 @@
+!**********************************************************************
+!****************************** GEOMETRY ******************************
+!**********************************************************************
+
+REAL CONST L_MB=14.3;
+REAL CONST L_MQ=6.29;
+REAL CONST L_MS=0.5;
+
+REAL CONST L_MQDA=L_MQ*1.54838709677;
+REAL CONST L_MQDB=L_MQ*1.87096774194;
+REAL CONST L_MQTL=L_MQ*0.41935483871;
+REAL CONST L_MQT=L_MQ*0.103225806452;
+
+REAL CONST L_cell=214.755154639;
+REAL CONST L_SQ=1.0;
+REAL CONST L_QD=4.24378865979;
+REAL CONST L_CQ=0.5*L_QD;
+REAL CONST L_DC=L_CQ-L_CQ;
+REAL CONST L_QQ=3.67;
+REAL CONST L_DD=1.36;
+REAL CONST L_SD=L_QD-L_SQ-L_MS;
+
+REAL CONST L_INJ=150.0;
+REAL CONST L_MATCH_INJ=96.8016666667;
+REAL CONST L_LSS=113.473029782;
+REAL CONST L_MATCH_LSS=47.3987886598;
+REAL CONST L_COLL=104.506207658;
+REAL CONST L_MATCH_COLL=47.3987886598;
+REAL CONST L_QT=0.3;
+
+REAL CONST RADIUS=0.02;
+
+REAL CONST TH_MB=0.0013632074;
+
+REAL CONST L_QD2=          3.67;
+REAL CONST L_MB_DS=     13.468763;
+REAL CONST TH_MB_DS=  0.0012839662;
+!**********************************************************************
+!****************************** MARKERS *******************************
+!**********************************************************************
+OMK : MARKER;
+IPA : OMK;
+IPB : OMK;
+IPD : OMK;
+IPF : OMK;
+IPG : OMK;
+IPH : OMK;
+IPJ : OMK;
+IPL : OMK;
+TSSC : OMK;
+TSSD : OMK;
+TSSE : OMK;
+TSSI : OMK;
+TSSJ : OMK;
+TSSK : OMK;
+!**********************************************************************
+!****************************** DIPOLES *******************************
+!**********************************************************************
+MB  : SBEND ,L=L_MB, ANGLE= TH_MB, HGAP=0.025, APERTYPE = CIRCLE,  APERTURE=RADIUS;
+MBDS : SBEND ,L=L_MB_DS, ANGLE= TH_MB_DS, HGAP=0.025, APERTYPE = CIRCLE,  APERTURE=RADIUS;
+!**********************************************************************
+!**************************** QUADRUPOLES *****************************
+!**********************************************************************
+MQ : QUADRUPOLE ,L=L_MQ, APERTYPE = CIRCLE,APERTURE=RADIUS;
+MQDA : QUADRUPOLE ,L=L_MQDA, APERTYPE = CIRCLE,APERTURE=RADIUS;
+MQDB : QUADRUPOLE ,L=L_MQDB, APERTYPE = CIRCLE,APERTURE=RADIUS;
+MQTL : QUADRUPOLE ,L=L_MQTL, APERTYPE = CIRCLE,APERTURE=RADIUS;
+MQT : QUADRUPOLE ,L=L_MQT, APERTYPE = CIRCLE,APERTURE=RADIUS;
+!**********************************************************************
+!***************************** SEXTUPOLES *****************************
+!**********************************************************************
+MS : SEXTUPOLE ,L=L_MS, APERTYPE = CIRCLE,  APERTURE=RADIUS;
+!**********************************************************************

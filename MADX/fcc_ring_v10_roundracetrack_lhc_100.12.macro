@@ -1,0 +1,2184 @@
+!**********************************************************************
+extract_seq : MACRO = {
+USE, SEQUENCE=FCC_RING;
+seqedit, sequence=FCC_RING;
+flatten;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.CELL.AB.H1, TO=E.CELL.AB.H1, newname=CELL_ARC;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.CELL.AB.H1, TO=E.CELL.AB.H1, newname=CELL_AB;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.CELL.BC.H1, TO=E.CELL.BC.H1, newname=CELL_BC;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.CELL.CD.H1, TO=E.CELL.CD.H1, newname=CELL_CD;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.CELL.DE.H1, TO=E.CELL.DE.H1, newname=CELL_DE;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.CELL.EF.H1, TO=E.CELL.EF.H1, newname=CELL_EF;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.CELL.FG.H1, TO=E.CELL.FG.H1, newname=CELL_FG;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.CELL.GH.H1, TO=E.CELL.GH.H1, newname=CELL_GH;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.CELL.HI.H1, TO=E.CELL.HI.H1, newname=CELL_HI;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.CELL.IJ.H1, TO=E.CELL.IJ.H1, newname=CELL_IJ;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.CELL.JK.H1, TO=E.CELL.JK.H1, newname=CELL_JK;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.CELL.KL.H1, TO=E.CELL.KL.H1, newname=CELL_KL;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.CELL.LA.H1, TO=E.CELL.LA.H1, newname=CELL_LA;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.INJ_B, TO=E.INJ_B, newname=CELL_INJ;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.LSS_F, TO=E.LSS_F, newname=CELL_LSS;
+EXTRACT, SEQUENCE=FCC_RING, FROM=IPA, TO=E.DS.RA.H1, newname=RIGHT_LSS_A;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LA.H1, TO=IPA, newname=LEFT_LSS_A;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LA.H1, TO=E.DS.RA.H1, newname=LSS_A_DS;
+EXTRACT, SEQUENCE=FCC_RING, FROM=IPB, TO=E.DS.RB.H1, newname=RIGHT_LSS_B;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LB.H1, TO=IPB, newname=LEFT_LSS_B;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LB.H1, TO=E.DS.RB.H1, newname=LSS_B_DS;
+EXTRACT, SEQUENCE=FCC_RING, FROM=IPD, TO=E.DS.RD.H1, newname=RIGHT_ESS_D;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LD.H1, TO=IPD, newname=LEFT_ESS_D;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LD.H1, TO=E.DS.RD.H1, newname=ESS_D_DS;
+EXTRACT, SEQUENCE=FCC_RING, FROM=IPF, TO=E.DS.RF.H1, newname=RIGHT_LSS_F;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LF.H1, TO=IPF, newname=LEFT_LSS_F;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LF.H1, TO=E.DS.RF.H1, newname=LSS_F_DS;
+EXTRACT, SEQUENCE=FCC_RING, FROM=IPG, TO=E.DS.RG.H1, newname=RIGHT_LSS_G;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LG.H1, TO=IPG, newname=LEFT_LSS_G;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LG.H1, TO=E.DS.RG.H1, newname=LSS_G_DS;
+EXTRACT, SEQUENCE=FCC_RING, FROM=IPH, TO=E.DS.RH.H1, newname=RIGHT_LSS_H;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LH.H1, TO=IPH, newname=LEFT_LSS_H;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LH.H1, TO=E.DS.RH.H1, newname=LSS_H_DS;
+EXTRACT, SEQUENCE=FCC_RING, FROM=IPJ, TO=E.DS.RJ.H1, newname=RIGHT_ESS_J;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LJ.H1, TO=IPJ, newname=LEFT_ESS_J;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LJ.H1, TO=E.DS.RJ.H1, newname=ESS_J_DS;
+EXTRACT, SEQUENCE=FCC_RING, FROM=IPL, TO=E.DS.RL.H1, newname=RIGHT_LSS_L;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LL.H1, TO=IPL, newname=LEFT_LSS_L;
+EXTRACT, SEQUENCE=FCC_RING, FROM=S.DS.LL.H1, TO=E.DS.RL.H1, newname=LSS_L_DS;
+endedit;
+!**********************************************************************
+use,sequence=LEFT_LSS_A;
+seqedit, sequence=LEFT_LSS_A;
+flatten;
+reflect;
+flatten;
+endedit;
+use,sequence=LEFT_LSS_B;
+seqedit, sequence=LEFT_LSS_B;
+flatten;
+reflect;
+flatten;
+endedit;
+use,sequence=LEFT_ESS_D;
+seqedit, sequence=LEFT_ESS_D;
+flatten;
+reflect;
+flatten;
+endedit;
+use,sequence=LEFT_LSS_F;
+seqedit, sequence=LEFT_LSS_F;
+flatten;
+reflect;
+flatten;
+endedit;
+use,sequence=LEFT_LSS_G;
+seqedit, sequence=LEFT_LSS_G;
+flatten;
+reflect;
+flatten;
+endedit;
+use,sequence=LEFT_LSS_H;
+seqedit, sequence=LEFT_LSS_H;
+flatten;
+reflect;
+flatten;
+endedit;
+use,sequence=LEFT_ESS_J;
+seqedit, sequence=LEFT_ESS_J;
+flatten;
+reflect;
+flatten;
+endedit;
+use,sequence=LEFT_LSS_L;
+seqedit, sequence=LEFT_LSS_L;
+flatten;
+reflect;
+flatten;
+endedit;
+}
+!**********************************************************************
+tws_selec: macro = {
+SELECT,FLAG=TWISS,clear;
+SELECT,FLAG=TWISS,column=name,keyword,s,l,k1l,k2l,betx,bety,alfx,alfy,dx,dpx,mux,muy,wx,wy;
+};
+mat_cell_arc: macro = {
+! Matching of the tune for arc lattice
+USE , SEQUENCE=cell_arc;
+MATCH, SEQUENCE=cell_arc;
+VARY, name=KQF.H1, lower=0, upper=Kmax;
+VARY, name=KQD.H1, lower=-Kmax, upper=0;
+GLOBAL,SEQUENCE=cell_arc,Q1=0.25,Q2=0.25;
+LMDIF,CALLS=2000,TOLERANCE=1.0E-12;
+ENDMATCH;
+};
+mat_save_cell_arc: macro ={
+USE, SEQUENCE=cell_arc;
+savebeta, label=tw_arc, place=#e;
+TWISS;
+betxmax=table(summ,BETXMAX);
+betymax=table(summ,BETYMAX);
+dxmax=table(summ,DXMAX);
+};
+!**********************************************************************
+!**********************************************************************
+mat_cell_INJ: macro = {
+! Matching of the tune for INJ lattice
+USE , SEQUENCE=CELL_INJ;
+MATCH, SEQUENCE=CELL_INJ;
+VARY, name=KQF.INJ.H1, lower=0, upper=Kmax;
+VARY, name=KQD.INJ.H1, lower=-Kmax, upper=0;
+GLOBAL,SEQUENCE=CELL_INJ,Q1=0.25,Q2=0.25;
+LMDIF,CALLS=2000,TOLERANCE=1.0E-12;
+ENDMATCH;
+};
+mat_save_cell_INJ: macro ={
+USE, SEQUENCE=CELL_INJ;
+savebeta, label=tw_INJ, place=#e;
+TWISS;
+betxmax_INJ=table(summ,BETXMAX);
+betymax_INJ=table(summ,BETYMAX);
+if (betxmax_INJ < betxmax) {betxmax_INJ := betxmax;}
+if (betymax_INJ < betymax) {betymax_INJ := betymax;}
+};
+!**********************************************************************
+mat_cell_LSS: macro = {
+! Matching of the tune for LSS lattice
+USE , SEQUENCE=CELL_LSS;
+MATCH, SEQUENCE=CELL_LSS;
+VARY, name=KQF.LSS.H1, lower=0, upper=Kmax;
+VARY, name=KQD.LSS.H1, lower=-Kmax, upper=0;
+GLOBAL,SEQUENCE=CELL_LSS,Q1=0.25,Q2=0.25;
+LMDIF,CALLS=2000,TOLERANCE=1.0E-12;
+ENDMATCH;
+};
+mat_save_cell_LSS: macro ={
+USE, SEQUENCE=CELL_LSS;
+savebeta, label=tw_LSS, place=#e;
+TWISS;
+betxmax_LSS=table(summ,BETXMAX);
+betymax_LSS=table(summ,BETYMAX);
+if (betxmax_LSS < betxmax) {betxmax_LSS := betxmax;}
+if (betymax_LSS < betymax) {betymax_LSS := betymax;}
+};
+!**********************************************************************
+mat_save_IP_A: macro ={
+tw_IP_A: BETA0, betx=1.1,bety=1.1,alfx=0,alfy=0,dx=0,dpx=0;
+};
+!**********************************************************************
+mat_save_IP_B: macro ={
+USE, SEQUENCE=LSS_B_DS, RANGE=S.INJ_B/IPB;
+savebeta, label=tw_IP_B, place=IPB;
+print,text="saves twiss functions at IP B";
+TWISS, beta0=tw_INJ;
+};
+!**********************************************************************
+mat_save_IP_D: macro ={
+USE, SEQUENCE=ESS_D_DS, RANGE=S.COLL_D/E.COLL_D;
+savebeta, label=tw_IP_D, place=IPD;
+print,text="saves twiss functions at IP D";
+TWISS,betx=336.83505545,bety=667.742725,alfx=0.01321553223,
+alfy=-1.434465636,dx=0.0,dpx=0.0;
+betxmax_COLL=table(summ,BETXMAX);
+betymax_COLL=table(summ,BETYMAX);
+if (betxmax_COLL < betxmax) {betxmax_COLL = betxmax;}
+if (betymax_COLL < betymax) {betymax_COLL = betymax;}
+};
+!**********************************************************************
+mat_save_IP_F: macro ={
+USE, SEQUENCE=LSS_F_DS, RANGE=S.LSS_F/IPF;
+savebeta, label=tw_IP_F, place=IPF;
+print,text="saves twiss functions at IP F";
+TWISS, beta0=tw_LSS;
+};
+!**********************************************************************
+mat_save_IP_G: macro ={
+tw_IP_G: BETA0, betx=1.1,bety=1.1,alfx=0,alfy=0,dx=0,dpx=0;
+};
+!**********************************************************************
+mat_save_IP_H: macro ={
+USE, SEQUENCE=LSS_H_DS, RANGE=S.LSS_H/IPH;
+savebeta, label=tw_IP_H, place=IPH;
+print,text="saves twiss functions at IP H";
+TWISS, beta0=tw_LSS;
+};
+!**********************************************************************
+mat_save_IP_J: macro ={
+USE, SEQUENCE=ESS_J_DS, RANGE=S.COLL_J/E.COLL_J;
+savebeta, label=tw_IP_J, place=IPJ;
+print,text="saves twiss functions at IP J";
+TWISS,betx=336.83505545,bety=667.742725,alfx=0.01321553223,
+alfy=-1.434465636,dx=0.0,dpx=0.0;
+betxmax_COLL=table(summ,BETXMAX);
+betymax_COLL=table(summ,BETYMAX);
+if (betxmax_COLL < betxmax) {betxmax_COLL = betxmax;}
+if (betymax_COLL < betymax) {betymax_COLL = betymax;}
+};
+!**********************************************************************
+mat_save_IP_L: macro ={
+USE, SEQUENCE=LSS_L_DS, RANGE=S.INJ_L/IPL;
+savebeta, label=tw_IP_L, place=IPL;
+print,text="saves twiss functions at IP L";
+TWISS, beta0=tw_INJ;
+};
+!**********************************************************************
+mat_save_cell_AB: macro = {
+USE, SEQUENCE=CELL_AB;
+savebeta, label=tw_cell_AB, place=#e;
+print,text="saves twiss functions at cell AB";
+twiss;
+};
+!**********************************************************************
+mat_save_cell_BC: macro = {
+USE, SEQUENCE=CELL_BC;
+savebeta, label=tw_cell_BC, place=#e;
+print,text="saves twiss functions at cell BC";
+twiss;
+};
+!**********************************************************************
+mat_save_cell_CD: macro = {
+USE, SEQUENCE=CELL_CD;
+savebeta, label=tw_cell_CD, place=#e;
+print,text="saves twiss functions at cell CD";
+twiss;
+};
+!**********************************************************************
+mat_save_cell_DE: macro = {
+USE, SEQUENCE=CELL_DE;
+savebeta, label=tw_cell_DE, place=#e;
+print,text="saves twiss functions at cell DE";
+twiss;
+};
+!**********************************************************************
+mat_save_cell_EF: macro = {
+USE, SEQUENCE=CELL_EF;
+savebeta, label=tw_cell_EF, place=#e;
+print,text="saves twiss functions at cell EF";
+twiss;
+};
+!**********************************************************************
+mat_save_cell_FG: macro = {
+USE, SEQUENCE=CELL_FG;
+savebeta, label=tw_cell_FG, place=#e;
+print,text="saves twiss functions at cell FG";
+twiss;
+};
+!**********************************************************************
+mat_save_cell_GH: macro = {
+USE, SEQUENCE=CELL_GH;
+savebeta, label=tw_cell_GH, place=#e;
+print,text="saves twiss functions at cell GH";
+twiss;
+};
+!**********************************************************************
+mat_save_cell_HI: macro = {
+USE, SEQUENCE=CELL_HI;
+savebeta, label=tw_cell_HI, place=#e;
+print,text="saves twiss functions at cell HI";
+twiss;
+};
+!**********************************************************************
+mat_save_cell_IJ: macro = {
+USE, SEQUENCE=CELL_IJ;
+savebeta, label=tw_cell_IJ, place=#e;
+print,text="saves twiss functions at cell IJ";
+twiss;
+};
+!**********************************************************************
+mat_save_cell_JK: macro = {
+USE, SEQUENCE=CELL_JK;
+savebeta, label=tw_cell_JK, place=#e;
+print,text="saves twiss functions at cell JK";
+twiss;
+};
+!**********************************************************************
+mat_save_cell_KL: macro = {
+USE, SEQUENCE=CELL_KL;
+savebeta, label=tw_cell_KL, place=#e;
+print,text="saves twiss functions at cell KL";
+twiss;
+};
+!**********************************************************************
+mat_save_cell_LA: macro = {
+USE, SEQUENCE=CELL_LA;
+savebeta, label=tw_cell_LA, place=#e;
+print,text="saves twiss functions at cell LA";
+twiss;
+};
+!**********************************************************************
+mat_LSS_A(tk,thin): macro ={
+! Matching of the LEFT of the section LSS_A
+USE , SEQUENCE=LEFT_LSS_A;
+MATCH, SEQUENCE=LEFT_LSS_A,
+betx=tk_IP_A->betx, bety=tk_IP_A->bety,
+alfx=-tk_IP_A->alfx, alfy=-tk_IP_A->alfy,
+dx=tk_IP_A->dx, dpx=-tk_IP_A->dpx,
+mux=0, muy=0;
+VARY, name=K1_MQYY.4L.H1, lower=0, upper=Kmax;
+VARY, name=K1_MQYL.5L.H1, lower=-Kmax, upper=0;
+VARY, name=K1_MQML.6L.H1, lower=0, upper=Kmax;
+VARY, name=K1_MQM.7L.H1, lower=-Kmax, upper=0;
+VARY, name=KQ8.LA.H1, lower=0, upper=Kmax;
+VARY, name=KQ9.LA.H1, lower=-Kmax, upper=0;
+VARY, name=KQ10.LA.H1, lower=0, upper=Kmax;
+VARY, name=KQTL11.LA.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.LA.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.LA.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_LA->alfx, ALFY=tw_cell_LA->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_LA->dx, DPX=tw_cell_LA->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_LA->betx, BETY= tw_cell_LA->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.LA_thick,
+MUY=muy.LA_thick;
+};
+CONSTRAINT, RANGE=E.DS.LA.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8LA.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9LA.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10LA.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11LA.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12LA.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13LA.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_LA->betx, BETY= tw_cell_LA->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=E.DS.LA.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8LA.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9LA.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10LA.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11LA.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12LA.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13LA.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_LA->betx, BETY= tw_cell_LA->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=E.DS.LA.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8LA.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9LA.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10LA.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11LA.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12LA.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13LA.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_LA->betx, BETY= tw_cell_LA->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=E.DS.LA.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8LA.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9LA.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10LA.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11LA.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12LA.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13LA.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_LA->betx, BETY= tw_cell_LA->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+! Matching of the RIGHT of the section LSS_A
+USE , SEQUENCE=RIGHT_LSS_A;
+MATCH, SEQUENCE=RIGHT_LSS_A,
+betx=tk_IP_A->betx, bety=tk_IP_A->bety,
+alfx= tk_IP_A->alfx, alfy= tk_IP_A->alfy,
+dx=tk_IP_A->dx, dpx= tk_IP_A->dpx,
+mux=0, muy=0;
+VARY, name=K1_MQYY.4R.H1, lower=-Kmax, upper=0;
+VARY, name=K1_MQYL.5R.H1, lower=0, upper=Kmax;
+VARY, name=K1_MQML.6R.H1, lower=-Kmax, upper=0;
+VARY, name=K1_MQM.7R.H1, lower=0, upper=Kmax;
+VARY, name=KQ8.RA.H1, lower=-Kmax, upper=0;
+VARY, name=KQ9.RA.H1, lower=0, upper=Kmax;
+VARY, name=KQ10.RA.H1, lower=-Kmax, upper=0;
+VARY, name=KQTL11.RA.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.RA.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.RA.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_AB->alfx, ALFY=tw_cell_AB->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_AB->dx, DPX=tw_cell_AB->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_AB->betx, BETY= tw_cell_AB->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.RA_thick,
+MUY=muy.RA_thick;
+};
+CONSTRAINT, RANGE=S.DS.RA.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8RA.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9RA.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10RA.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11RA.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12RA.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13RA.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_AB->betx, BETY= tw_cell_AB->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=S.DS.RA.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8RA.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9RA.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10RA.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11RA.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12RA.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13RA.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_AB->betx, BETY= tw_cell_AB->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=S.DS.RA.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8RA.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9RA.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10RA.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11RA.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12RA.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13RA.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_AB->betx, BETY= tw_cell_AB->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=S.DS.RA.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8RA.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9RA.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10RA.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11RA.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12RA.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13RA.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_AB->betx, BETY= tw_cell_AB->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+};
+!**********************************************************************
+mat_LSS_B(tk,thin): macro ={
+! Matching of the LEFT of the section LSS_B
+USE , SEQUENCE=LEFT_LSS_B;
+MATCH, SEQUENCE=LEFT_LSS_B,
+betx=tk_IP_B->betx, bety=tk_IP_B->bety,
+alfx=-tk_IP_B->alfx, alfy=-tk_IP_B->alfy,
+dx=tk_IP_B->dx, dpx=-tk_IP_B->dpx,
+mux=0, muy=0;
+VARY, name=KQ4.LB.H1, lower=-Kmax, upper=0;
+VARY, name=KQ5.LB.H1, lower=0, upper=Kmax;
+VARY, name=KQ6.LB.H1, lower=-Kmax, upper=0;
+VARY, name=KQ7.LB.H1, lower=0, upper=Kmax;
+VARY, name=KQ8.LB.H1, lower=-Kmax, upper=0;
+VARY, name=KQ9.LB.H1, lower=0, upper=Kmax;
+VARY, name=KQ10.LB.H1, lower=-Kmax, upper=0;
+VARY, name=KQTL11.LB.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.LB.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.LB.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_AB->alfx, ALFY=tw_cell_AB->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_AB->dx, DPX=tw_cell_AB->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_AB->betx, BETY= tw_cell_AB->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.LB_thick,
+MUY=muy.LB_thick;
+};
+CONSTRAINT, RANGE=MQ.4LB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=MQ.5LB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=MQ.6LB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=MQ.7LB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=E.DS.LB.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8LB.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9LB.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10LB.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11LB.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12LB.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13LB.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_AB->betx, BETY= tw_cell_AB->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.5LB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.6LB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.7LB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=E.DS.LB.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8LB.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9LB.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10LB.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11LB.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12LB.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13LB.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_AB->betx, BETY= tw_cell_AB->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.5LB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.6LB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.7LB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=E.DS.LB.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8LB.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9LB.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10LB.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11LB.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12LB.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13LB.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_AB->betx, BETY= tw_cell_AB->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=MQ.5LB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=MQ.6LB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=MQ.7LB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=E.DS.LB.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8LB.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9LB.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10LB.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11LB.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12LB.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13LB.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_AB->betx, BETY= tw_cell_AB->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+! Matching of the RIGHT of the section LSS_B
+USE , SEQUENCE=RIGHT_LSS_B;
+MATCH, SEQUENCE=RIGHT_LSS_B,
+betx=tk_IP_B->betx, bety=tk_IP_B->bety,
+alfx= tk_IP_B->alfx, alfy= tk_IP_B->alfy,
+dx=tk_IP_B->dx, dpx= tk_IP_B->dpx,
+mux=0, muy=0;
+VARY, name=KQ4.RB.H1, lower=0, upper=Kmax;
+VARY, name=KQ5.RB.H1, lower=-Kmax, upper=0;
+VARY, name=KQ6.RB.H1, lower=0, upper=Kmax;
+VARY, name=KQ7.RB.H1, lower=-Kmax, upper=0;
+VARY, name=KQ8.RB.H1, lower=0, upper=Kmax;
+VARY, name=KQ9.RB.H1, lower=-Kmax, upper=0;
+VARY, name=KQ10.RB.H1, lower=0, upper=Kmax;
+VARY, name=KQTL11.RB.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.RB.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.RB.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_BC->alfx, ALFY=tw_cell_BC->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_BC->dx, DPX=tw_cell_BC->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_BC->betx, BETY= tw_cell_BC->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.RB_thick,
+MUY=muy.RB_thick;
+};
+CONSTRAINT, RANGE=MQ.4RB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=MQ.5RB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=MQ.6RB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=MQ.7RB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=S.DS.RB.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8RB.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9RB.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10RB.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11RB.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12RB.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13RB.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_BC->betx, BETY= tw_cell_BC->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.5RB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.6RB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.7RB.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=S.DS.RB.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8RB.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9RB.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10RB.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11RB.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12RB.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13RB.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_BC->betx, BETY= tw_cell_BC->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.5RB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.6RB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.7RB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=S.DS.RB.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8RB.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9RB.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10RB.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11RB.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12RB.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13RB.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_BC->betx, BETY= tw_cell_BC->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=MQ.5RB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=MQ.6RB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=MQ.7RB.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=S.DS.RB.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8RB.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9RB.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10RB.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11RB.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12RB.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13RB.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_BC->betx, BETY= tw_cell_BC->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+};
+!**********************************************************************
+mat_ESS_D(tk,thin): macro ={
+! Matching of the LEFT of the section ESS_D
+USE , SEQUENCE=LEFT_ESS_D;
+MATCH, SEQUENCE=LEFT_ESS_D,
+betx=tk_IP_D->betx, bety=tk_IP_D->bety,
+alfx=-tk_IP_D->alfx, alfy=-tk_IP_D->alfy,
+dx=tk_IP_D->dx, dpx=-tk_IP_D->dpx,
+mux=0, muy=0;
+VARY, name=KQ4.LD.H1, lower=0, upper=Kmax;
+VARY, name=KQ5.LD.H1, lower=-Kmax, upper=0;
+VARY, name=KQ6.LD.H1, lower=0, upper=Kmax;
+VARY, name=KQ7.LD.H1, lower=-Kmax, upper=0;
+VARY, name=KQ8.LD.H1, lower=0, upper=Kmax;
+VARY, name=KQ9.LD.H1, lower=-Kmax, upper=0;
+VARY, name=KQ10.LD.H1, lower=0, upper=Kmax;
+VARY, name=KQTL11.LD.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.LD.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.LD.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_CD->alfx, ALFY=tw_cell_CD->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_CD->dx, DPX=tw_cell_CD->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_CD->betx, BETY= tw_cell_CD->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.LD_thick,
+MUY=muy.LD_thick;
+};
+CONSTRAINT, RANGE=MQ.4LD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=MQ.5LD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=MQ.6LD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=MQ.7LD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=E.DS.LD.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8LD.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9LD.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10LD.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11LD.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12LD.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13LD.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_CD->betx, BETY= tw_cell_CD->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.5LD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.6LD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.7LD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=E.DS.LD.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8LD.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9LD.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10LD.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11LD.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12LD.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13LD.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_CD->betx, BETY= tw_cell_CD->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.5LD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.6LD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.7LD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=E.DS.LD.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8LD.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9LD.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10LD.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11LD.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12LD.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13LD.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_CD->betx, BETY= tw_cell_CD->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=MQ.5LD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=MQ.6LD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=MQ.7LD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=E.DS.LD.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8LD.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9LD.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10LD.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11LD.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12LD.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13LD.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_CD->betx, BETY= tw_cell_CD->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+! Matching of the RIGHT of the section ESS_D
+USE , SEQUENCE=RIGHT_ESS_D;
+MATCH, SEQUENCE=RIGHT_ESS_D,
+betx=tk_IP_D->betx, bety=tk_IP_D->bety,
+alfx= tk_IP_D->alfx, alfy= tk_IP_D->alfy,
+dx=tk_IP_D->dx, dpx= tk_IP_D->dpx,
+mux=0, muy=0;
+VARY, name=KQ4.RD.H1, lower=-Kmax, upper=0;
+VARY, name=KQ5.RD.H1, lower=0, upper=Kmax;
+VARY, name=KQ6.RD.H1, lower=-Kmax, upper=0;
+VARY, name=KQ7.RD.H1, lower=0, upper=Kmax;
+VARY, name=KQ8.RD.H1, lower=-Kmax, upper=0;
+VARY, name=KQ9.RD.H1, lower=0, upper=Kmax;
+VARY, name=KQ10.RD.H1, lower=-Kmax, upper=0;
+VARY, name=KQTL11.RD.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.RD.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.RD.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_DE->alfx, ALFY=tw_cell_DE->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_DE->dx, DPX=tw_cell_DE->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_DE->betx, BETY= tw_cell_DE->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.RD_thick,
+MUY=muy.RD_thick;
+};
+CONSTRAINT, RANGE=MQ.4RD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=MQ.5RD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=MQ.6RD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=MQ.7RD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=S.DS.RD.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8RD.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9RD.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10RD.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11RD.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12RD.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13RD.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_DE->betx, BETY= tw_cell_DE->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.5RD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.6RD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.7RD.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=S.DS.RD.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8RD.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9RD.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10RD.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11RD.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12RD.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13RD.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_DE->betx, BETY= tw_cell_DE->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.5RD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.6RD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.7RD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=S.DS.RD.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8RD.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9RD.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10RD.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11RD.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12RD.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13RD.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_DE->betx, BETY= tw_cell_DE->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=MQ.5RD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=MQ.6RD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=MQ.7RD.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=S.DS.RD.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8RD.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9RD.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10RD.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11RD.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12RD.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13RD.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_DE->betx, BETY= tw_cell_DE->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+};
+!**********************************************************************
+mat_LSS_F(tk,thin): macro ={
+! Matching of the LEFT of the section LSS_F
+USE , SEQUENCE=LEFT_LSS_F;
+MATCH, SEQUENCE=LEFT_LSS_F,
+betx=tk_IP_F->betx, bety=tk_IP_F->bety,
+alfx=-tk_IP_F->alfx, alfy=-tk_IP_F->alfy,
+dx=tk_IP_F->dx, dpx=-tk_IP_F->dpx,
+mux=0, muy=0;
+VARY, name=KQ4.LF.H1, lower=-Kmax, upper=0;
+VARY, name=KQ5.LF.H1, lower=0, upper=Kmax;
+VARY, name=KQ6.LF.H1, lower=-Kmax, upper=0;
+VARY, name=KQ7.LF.H1, lower=0, upper=Kmax;
+VARY, name=KQ8.LF.H1, lower=-Kmax, upper=0;
+VARY, name=KQ9.LF.H1, lower=0, upper=Kmax;
+VARY, name=KQ10.LF.H1, lower=-Kmax, upper=0;
+VARY, name=KQTL11.LF.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.LF.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.LF.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_EF->alfx, ALFY=tw_cell_EF->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_EF->dx, DPX=tw_cell_EF->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_EF->betx, BETY= tw_cell_EF->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.LF_thick,
+MUY=muy.LF_thick;
+};
+CONSTRAINT, RANGE=MQ.4LF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=MQ.5LF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=MQ.6LF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=MQ.7LF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=E.DS.LF.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8LF.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9LF.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10LF.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11LF.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12LF.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13LF.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_EF->betx, BETY= tw_cell_EF->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.5LF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.6LF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.7LF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=E.DS.LF.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8LF.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9LF.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10LF.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11LF.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12LF.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13LF.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_EF->betx, BETY= tw_cell_EF->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.5LF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.6LF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.7LF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=E.DS.LF.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8LF.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9LF.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10LF.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11LF.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12LF.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13LF.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_EF->betx, BETY= tw_cell_EF->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=MQ.5LF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=MQ.6LF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=MQ.7LF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=E.DS.LF.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8LF.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9LF.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10LF.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11LF.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12LF.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13LF.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_EF->betx, BETY= tw_cell_EF->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+! Matching of the RIGHT of the section LSS_F
+USE , SEQUENCE=RIGHT_LSS_F;
+MATCH, SEQUENCE=RIGHT_LSS_F,
+betx=tk_IP_F->betx, bety=tk_IP_F->bety,
+alfx= tk_IP_F->alfx, alfy= tk_IP_F->alfy,
+dx=tk_IP_F->dx, dpx= tk_IP_F->dpx,
+mux=0, muy=0;
+VARY, name=KQ4.RF.H1, lower=0, upper=Kmax;
+VARY, name=KQ5.RF.H1, lower=-Kmax, upper=0;
+VARY, name=KQ6.RF.H1, lower=0, upper=Kmax;
+VARY, name=KQ7.RF.H1, lower=-Kmax, upper=0;
+VARY, name=KQ8.RF.H1, lower=0, upper=Kmax;
+VARY, name=KQ9.RF.H1, lower=-Kmax, upper=0;
+VARY, name=KQ10.RF.H1, lower=0, upper=Kmax;
+VARY, name=KQTL11.RF.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.RF.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.RF.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_FG->alfx, ALFY=tw_cell_FG->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_FG->dx, DPX=tw_cell_FG->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_FG->betx, BETY= tw_cell_FG->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.RF_thick,
+MUY=muy.RF_thick;
+};
+CONSTRAINT, RANGE=MQ.4RF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=MQ.5RF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=MQ.6RF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=MQ.7RF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=S.DS.RF.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8RF.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9RF.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10RF.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11RF.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12RF.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13RF.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_FG->betx, BETY= tw_cell_FG->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.5RF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.6RF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.7RF.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=S.DS.RF.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8RF.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9RF.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10RF.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11RF.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12RF.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13RF.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_FG->betx, BETY= tw_cell_FG->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.5RF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.6RF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.7RF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=S.DS.RF.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8RF.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9RF.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10RF.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11RF.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12RF.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13RF.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_FG->betx, BETY= tw_cell_FG->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=MQ.5RF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=MQ.6RF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=MQ.7RF.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=S.DS.RF.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8RF.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9RF.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10RF.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11RF.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12RF.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13RF.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_FG->betx, BETY= tw_cell_FG->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+};
+!**********************************************************************
+mat_LSS_G(tk,thin): macro ={
+! Matching of the LEFT of the section LSS_G
+USE , SEQUENCE=LEFT_LSS_G;
+MATCH, SEQUENCE=LEFT_LSS_G,
+betx=tk_IP_G->betx, bety=tk_IP_G->bety,
+alfx=-tk_IP_G->alfx, alfy=-tk_IP_G->alfy,
+dx=tk_IP_G->dx, dpx=-tk_IP_G->dpx,
+mux=0, muy=0;
+
+VARY, name=KQ8.LG.H1, lower=0, upper=Kmax;
+VARY, name=KQ9.LG.H1, lower=-Kmax, upper=0;
+VARY, name=KQ10.LG.H1, lower=0, upper=Kmax;
+VARY, name=KQTL11.LG.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.LG.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.LG.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_FG->alfx, ALFY=tw_cell_FG->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_FG->dx, DPX=tw_cell_FG->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_FG->betx, BETY= tw_cell_FG->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.LG_thick,
+MUY=muy.LG_thick;
+};
+CONSTRAINT, RANGE=E.DS.LG.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8LG.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9LG.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10LG.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11LG.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12LG.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13LG.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_FG->betx, BETY= tw_cell_FG->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=E.DS.LG.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8LG.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9LG.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10LG.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11LG.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12LG.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13LG.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_FG->betx, BETY= tw_cell_FG->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=E.DS.LG.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8LG.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9LG.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10LG.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11LG.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12LG.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13LG.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_FG->betx, BETY= tw_cell_FG->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=E.DS.LG.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8LG.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9LG.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10LG.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11LG.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12LG.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13LG.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_FG->betx, BETY= tw_cell_FG->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+! Matching of the RIGHT of the section LSS_G
+USE , SEQUENCE=RIGHT_LSS_G;
+MATCH, SEQUENCE=RIGHT_LSS_G,
+betx=tk_IP_G->betx, bety=tk_IP_G->bety,
+alfx= tk_IP_G->alfx, alfy= tk_IP_G->alfy,
+dx=tk_IP_G->dx, dpx= tk_IP_G->dpx,
+mux=0, muy=0;
+
+VARY, name=KQ8.RG.H1, lower=-Kmax, upper=0;
+VARY, name=KQ9.RG.H1, lower=0, upper=Kmax;
+VARY, name=KQ10.RG.H1, lower=-Kmax, upper=0;
+VARY, name=KQTL11.RG.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.RG.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.RG.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_GH->alfx, ALFY=tw_cell_GH->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_GH->dx, DPX=tw_cell_GH->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_GH->betx, BETY= tw_cell_GH->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.RG_thick,
+MUY=muy.RG_thick;
+};
+CONSTRAINT, RANGE=S.DS.RG.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8RG.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9RG.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10RG.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11RG.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12RG.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13RG.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_GH->betx, BETY= tw_cell_GH->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=S.DS.RG.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8RG.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9RG.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10RG.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11RG.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12RG.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13RG.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_GH->betx, BETY= tw_cell_GH->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=S.DS.RG.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8RG.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9RG.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10RG.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11RG.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12RG.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13RG.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_GH->betx, BETY= tw_cell_GH->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=S.DS.RG.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8RG.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9RG.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10RG.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11RG.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12RG.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13RG.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_GH->betx, BETY= tw_cell_GH->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+};
+!**********************************************************************
+mat_LSS_H(tk,thin): macro ={
+! Matching of the LEFT of the section LSS_H
+USE , SEQUENCE=LEFT_LSS_H;
+MATCH, SEQUENCE=LEFT_LSS_H,
+betx=tk_IP_H->betx, bety=tk_IP_H->bety,
+alfx=-tk_IP_H->alfx, alfy=-tk_IP_H->alfy,
+dx=tk_IP_H->dx, dpx=-tk_IP_H->dpx,
+mux=0, muy=0;
+VARY, name=KQ4.LH.H1, lower=-Kmax, upper=0;
+VARY, name=KQ5.LH.H1, lower=0, upper=Kmax;
+VARY, name=KQ6.LH.H1, lower=-Kmax, upper=0;
+VARY, name=KQ7.LH.H1, lower=0, upper=Kmax;
+VARY, name=KQ8.LH.H1, lower=-Kmax, upper=0;
+VARY, name=KQ9.LH.H1, lower=0, upper=Kmax;
+VARY, name=KQ10.LH.H1, lower=-Kmax, upper=0;
+VARY, name=KQTL11.LH.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.LH.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.LH.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_GH->alfx, ALFY=tw_cell_GH->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_GH->dx, DPX=tw_cell_GH->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_GH->betx, BETY= tw_cell_GH->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.LH_thick,
+MUY=muy.LH_thick;
+};
+CONSTRAINT, RANGE=MQ.4LH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=MQ.5LH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=MQ.6LH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=MQ.7LH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=E.DS.LH.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8LH.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9LH.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10LH.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11LH.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12LH.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13LH.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_GH->betx, BETY= tw_cell_GH->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.5LH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.6LH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.7LH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=E.DS.LH.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8LH.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9LH.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10LH.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11LH.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12LH.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13LH.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_GH->betx, BETY= tw_cell_GH->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.5LH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.6LH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.7LH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=E.DS.LH.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8LH.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9LH.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10LH.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11LH.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12LH.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13LH.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_GH->betx, BETY= tw_cell_GH->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=MQ.5LH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=MQ.6LH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=MQ.7LH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=E.DS.LH.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8LH.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9LH.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10LH.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11LH.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12LH.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13LH.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_GH->betx, BETY= tw_cell_GH->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+! Matching of the RIGHT of the section LSS_H
+USE , SEQUENCE=RIGHT_LSS_H;
+MATCH, SEQUENCE=RIGHT_LSS_H,
+betx=tk_IP_H->betx, bety=tk_IP_H->bety,
+alfx= tk_IP_H->alfx, alfy= tk_IP_H->alfy,
+dx=tk_IP_H->dx, dpx= tk_IP_H->dpx,
+mux=0, muy=0;
+VARY, name=KQ4.RH.H1, lower=0, upper=Kmax;
+VARY, name=KQ5.RH.H1, lower=-Kmax, upper=0;
+VARY, name=KQ6.RH.H1, lower=0, upper=Kmax;
+VARY, name=KQ7.RH.H1, lower=-Kmax, upper=0;
+VARY, name=KQ8.RH.H1, lower=0, upper=Kmax;
+VARY, name=KQ9.RH.H1, lower=-Kmax, upper=0;
+VARY, name=KQ10.RH.H1, lower=0, upper=Kmax;
+VARY, name=KQTL11.RH.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.RH.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.RH.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_HI->alfx, ALFY=tw_cell_HI->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_HI->dx, DPX=tw_cell_HI->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_HI->betx, BETY= tw_cell_HI->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.RH_thick,
+MUY=muy.RH_thick;
+};
+CONSTRAINT, RANGE=MQ.4RH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=MQ.5RH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=MQ.6RH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=MQ.7RH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<4.5;
+CONSTRAINT, RANGE=S.DS.RH.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8RH.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9RH.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10RH.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11RH.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12RH.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13RH.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_HI->betx, BETY= tw_cell_HI->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.5RH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.6RH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.7RH.H1, BETX<1.5*betxmax_LSS, BETY<1.5*betymax_LSS, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=S.DS.RH.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8RH.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9RH.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10RH.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11RH.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12RH.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13RH.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_HI->betx, BETY= tw_cell_HI->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.5RH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.6RH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.7RH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=S.DS.RH.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8RH.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9RH.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10RH.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11RH.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12RH.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13RH.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_HI->betx, BETY= tw_cell_HI->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=MQ.5RH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=MQ.6RH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=MQ.7RH.H1, BETX<1.2*betxmax_LSS, BETY<1.2*betymax_LSS, Dx<4;
+CONSTRAINT, RANGE=S.DS.RH.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8RH.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9RH.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10RH.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11RH.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12RH.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13RH.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_HI->betx, BETY= tw_cell_HI->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+};
+!**********************************************************************
+mat_ESS_J(tk,thin): macro ={
+! Matching of the LEFT of the section ESS_J
+USE , SEQUENCE=LEFT_ESS_J;
+MATCH, SEQUENCE=LEFT_ESS_J,
+betx=tk_IP_J->betx, bety=tk_IP_J->bety,
+alfx=-tk_IP_J->alfx, alfy=-tk_IP_J->alfy,
+dx=tk_IP_J->dx, dpx=-tk_IP_J->dpx,
+mux=0, muy=0;
+VARY, name=KQ4.LJ.H1, lower=0, upper=Kmax;
+VARY, name=KQ5.LJ.H1, lower=-Kmax, upper=0;
+VARY, name=KQ6.LJ.H1, lower=0, upper=Kmax;
+VARY, name=KQ7.LJ.H1, lower=-Kmax, upper=0;
+VARY, name=KQ8.LJ.H1, lower=0, upper=Kmax;
+VARY, name=KQ9.LJ.H1, lower=-Kmax, upper=0;
+VARY, name=KQ10.LJ.H1, lower=0, upper=Kmax;
+VARY, name=KQTL11.LJ.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.LJ.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.LJ.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_IJ->alfx, ALFY=tw_cell_IJ->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_IJ->dx, DPX=tw_cell_IJ->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_IJ->betx, BETY= tw_cell_IJ->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.LJ_thick,
+MUY=muy.LJ_thick;
+};
+CONSTRAINT, RANGE=MQ.4LJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=MQ.5LJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=MQ.6LJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=MQ.7LJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=E.DS.LJ.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8LJ.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9LJ.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10LJ.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11LJ.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12LJ.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13LJ.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_IJ->betx, BETY= tw_cell_IJ->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.5LJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.6LJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.7LJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=E.DS.LJ.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8LJ.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9LJ.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10LJ.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11LJ.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12LJ.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13LJ.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_IJ->betx, BETY= tw_cell_IJ->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.5LJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.6LJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.7LJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=E.DS.LJ.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8LJ.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9LJ.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10LJ.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11LJ.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12LJ.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13LJ.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_IJ->betx, BETY= tw_cell_IJ->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=MQ.5LJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=MQ.6LJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=MQ.7LJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=E.DS.LJ.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8LJ.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9LJ.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10LJ.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11LJ.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12LJ.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13LJ.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_IJ->betx, BETY= tw_cell_IJ->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+! Matching of the RIGHT of the section ESS_J
+USE , SEQUENCE=RIGHT_ESS_J;
+MATCH, SEQUENCE=RIGHT_ESS_J,
+betx=tk_IP_J->betx, bety=tk_IP_J->bety,
+alfx= tk_IP_J->alfx, alfy= tk_IP_J->alfy,
+dx=tk_IP_J->dx, dpx= tk_IP_J->dpx,
+mux=0, muy=0;
+VARY, name=KQ4.RJ.H1, lower=-Kmax, upper=0;
+VARY, name=KQ5.RJ.H1, lower=0, upper=Kmax;
+VARY, name=KQ6.RJ.H1, lower=-Kmax, upper=0;
+VARY, name=KQ7.RJ.H1, lower=0, upper=Kmax;
+VARY, name=KQ8.RJ.H1, lower=-Kmax, upper=0;
+VARY, name=KQ9.RJ.H1, lower=0, upper=Kmax;
+VARY, name=KQ10.RJ.H1, lower=-Kmax, upper=0;
+VARY, name=KQTL11.RJ.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.RJ.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.RJ.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_JK->alfx, ALFY=tw_cell_JK->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_JK->dx, DPX=tw_cell_JK->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_JK->betx, BETY= tw_cell_JK->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.RJ_thick,
+MUY=muy.RJ_thick;
+};
+CONSTRAINT, RANGE=MQ.4RJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=MQ.5RJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=MQ.6RJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=MQ.7RJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<4.5;
+CONSTRAINT, RANGE=S.DS.RJ.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8RJ.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9RJ.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10RJ.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11RJ.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12RJ.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13RJ.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_JK->betx, BETY= tw_cell_JK->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.5RJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.6RJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.7RJ.H1, BETX<1.5*betxmax_COLL, BETY<1.5*betymax_COLL, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=S.DS.RJ.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8RJ.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9RJ.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10RJ.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11RJ.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12RJ.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13RJ.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_JK->betx, BETY= tw_cell_JK->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.5RJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.6RJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.7RJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=S.DS.RJ.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8RJ.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9RJ.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10RJ.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11RJ.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12RJ.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13RJ.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_JK->betx, BETY= tw_cell_JK->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=MQ.5RJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=MQ.6RJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=MQ.7RJ.H1, BETX<1.2*betxmax_COLL, BETY<1.2*betymax_COLL, Dx<4;
+CONSTRAINT, RANGE=S.DS.RJ.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8RJ.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9RJ.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10RJ.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11RJ.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12RJ.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13RJ.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_JK->betx, BETY= tw_cell_JK->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+};
+!**********************************************************************
+mat_LSS_L(tk,thin): macro ={
+! Matching of the LEFT of the section LSS_L
+USE , SEQUENCE=LEFT_LSS_L;
+MATCH, SEQUENCE=LEFT_LSS_L,
+betx=tk_IP_L->betx, bety=tk_IP_L->bety,
+alfx=-tk_IP_L->alfx, alfy=-tk_IP_L->alfy,
+dx=tk_IP_L->dx, dpx=-tk_IP_L->dpx,
+mux=0, muy=0;
+VARY, name=KQ4.LL.H1, lower=-Kmax, upper=0;
+VARY, name=KQ5.LL.H1, lower=0, upper=Kmax;
+VARY, name=KQ6.LL.H1, lower=-Kmax, upper=0;
+VARY, name=KQ7.LL.H1, lower=0, upper=Kmax;
+VARY, name=KQ8.LL.H1, lower=-Kmax, upper=0;
+VARY, name=KQ9.LL.H1, lower=0, upper=Kmax;
+VARY, name=KQ10.LL.H1, lower=-Kmax, upper=0;
+VARY, name=KQTL11.LL.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.LL.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.LL.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_KL->alfx, ALFY=tw_cell_KL->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_KL->dx, DPX=tw_cell_KL->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_KL->betx, BETY= tw_cell_KL->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.LL_thick,
+MUY=muy.LL_thick;
+};
+CONSTRAINT, RANGE=MQ.4LL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=MQ.5LL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=MQ.6LL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=MQ.7LL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=E.DS.LL.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8LL.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9LL.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10LL.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11LL.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12LL.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13LL.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_KL->betx, BETY= tw_cell_KL->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.5LL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.6LL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.7LL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=E.DS.LL.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8LL.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9LL.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10LL.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11LL.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12LL.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13LL.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_KL->betx, BETY= tw_cell_KL->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.5LL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.6LL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.7LL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=E.DS.LL.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8LL.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9LL.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10LL.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11LL.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12LL.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13LL.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_KL->betx, BETY= tw_cell_KL->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4LL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=MQ.5LL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=MQ.6LL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=MQ.7LL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=E.DS.LL.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8LL.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9LL.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10LL.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11LL.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12LL.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13LL.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_KL->betx, BETY= tw_cell_KL->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+! Matching of the RIGHT of the section LSS_L
+USE , SEQUENCE=RIGHT_LSS_L;
+MATCH, SEQUENCE=RIGHT_LSS_L,
+betx=tk_IP_L->betx, bety=tk_IP_L->bety,
+alfx= tk_IP_L->alfx, alfy= tk_IP_L->alfy,
+dx=tk_IP_L->dx, dpx= tk_IP_L->dpx,
+mux=0, muy=0;
+VARY, name=KQ4.RL.H1, lower=0, upper=Kmax;
+VARY, name=KQ5.RL.H1, lower=-Kmax, upper=0;
+VARY, name=KQ6.RL.H1, lower=0, upper=Kmax;
+VARY, name=KQ7.RL.H1, lower=-Kmax, upper=0;
+VARY, name=KQ8.RL.H1, lower=0, upper=Kmax;
+VARY, name=KQ9.RL.H1, lower=-Kmax, upper=0;
+VARY, name=KQ10.RL.H1, lower=0, upper=Kmax;
+VARY, name=KQTL11.RL.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT12.RL.H1, lower=-Kmax, upper=Kmax;
+VARY, name=KQT13.RL.H1, lower=-Kmax, upper=Kmax;
+CONSTRAINT, RANGE=#e,ALFX=tw_cell_LA->alfx, ALFY=tw_cell_LA->alfy;
+CONSTRAINT, RANGE=#e,DX= tw_cell_LA->dx, DPX=tw_cell_LA->dpx;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_LA->betx, BETY= tw_cell_LA->bety;
+if (thin == 1) {
+CONSTRAINT, RANGE=#e,MUX=mux.RL_thick,
+MUY=muy.RL_thick;
+};
+CONSTRAINT, RANGE=MQ.4RL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=MQ.5RL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=MQ.6RL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=MQ.7RL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<4.5;
+CONSTRAINT, RANGE=S.DS.RL.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.8RL.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDA.9RL.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQDB.10RL.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.11RL.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.12RL.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=MQ.13RL.H1, BETX<750, BETY<750, Dx<4.5;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_LA->betx, BETY= tw_cell_LA->bety;
+SIMPLEX,CALLS=1000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.5RL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.6RL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.7RL.H1, BETX<1.5*betxmax_INJ, BETY<1.5*betymax_INJ, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=S.DS.RL.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.8RL.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDA.9RL.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQDB.10RL.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.11RL.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.12RL.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=MQ.13RL.H1, BETX<2.0*betxmax, BETY<2.0*betymax, Dx<2.0*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_LA->betx, BETY= tw_cell_LA->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3, RANDOM=0.05;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.5RL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.6RL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.7RL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=S.DS.RL.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.8RL.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDA.9RL.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQDB.10RL.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.11RL.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.12RL.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=MQ.13RL.H1, BETX<1.5*betxmax, BETY<1.5*betymax, Dx<1.5*dxmax;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_LA->betx, BETY= tw_cell_LA->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+CONSTRAINT, RANGE=MQ.4RL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=MQ.5RL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=MQ.6RL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=MQ.7RL.H1, BETX<1.2*betxmax_INJ, BETY<1.2*betymax_INJ, Dx<4;
+CONSTRAINT, RANGE=S.DS.RL.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.8RL.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDA.9RL.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQDB.10RL.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.11RL.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.12RL.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=MQ.13RL.H1, BETX<750, BETY<750, Dx<4;
+CONSTRAINT, RANGE=#e,BETX= tw_cell_LA->betx, BETY= tw_cell_LA->bety;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+JACOBIAN,CALLS=50,TOLERANCE=1e-12,STRATEGY=3;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+LMDIF,CALLS=2000,TOLERANCE=1e-12;
+ENDMATCH;
+};
+!**********************************************************************
+mat_chrom_full_ring: macro = {
+! Matching of the chromaticity for arc lattice
+USE, SEQUENCE=FCC_RING;
+TWISS;
+MATCH, SEQUENCE=FCC_RING;
+VARY, name=KSF.H1, step=1e-6;
+VARY, name=KSD.H1, step=1e-6;
+GLOBAL, SEQUENCE=FCC_RING,DQ1=0.;
+GLOBAL, SEQUENCE=FCC_RING,DQ2=0.;
+LMDIF,CALLS=100,TOLERANCE=1.0E-12;
+ENDMATCH;
+};
+!**********************************************************************
+plt_cell_ARC(tit1,file1) : macro={
+USE, SEQUENCE=CELL_ARC;
+TWISS,centre;
+plot,haxis=s,vaxis1=betx,bety,vaxis2=dx,colour=100,
+noversion,title='arc cell tit1',
+FILE="file1";
+};
+plt_cell_LSS(tit1,file1) : macro={
+USE, SEQUENCE=CELL_LSS;
+TWISS,centre;
+plot,haxis=s,vaxis1=betx,bety,vaxis2=dx,colour=100,
+noversion,title='arc cell tit1',
+FILE="file1";
+};
+plt_cell_INJ(tit1,file1) : macro={
+USE, SEQUENCE=CELL_INJ;
+TWISS,centre;
+plot,haxis=s,vaxis1=betx,bety,vaxis2=dx,colour=100,
+noversion,title='arc cell tit1',
+FILE="file1";
+};
+!**********************************************************************
+plt_LSS_A(tit1, file1) : macro={
+USE, SEQUENCE=LSS_A_DS;
+TWISS,centre,
+betx=tw_cell_LA->betx,
+bety=tw_cell_LA->bety,
+dx=tw_cell_LA->dx,
+alfx=-tw_cell_LA->alfx,
+alfy=-tw_cell_LA->alfy,
+dpx=-tw_cell_LA->dpx,
+MUX=0,MUY=0;
+plot,haxis=s,vaxis1=betx,bety,vaxis2=dx,colour=100,
+noversion,title='LSS-A+DS tit1',
+FILE="file1";
+};
+!**********************************************************************
+plt_LSS_B(tit1, file1) : macro={
+USE, SEQUENCE=LSS_B_DS;
+TWISS,centre,
+betx=tw_cell_AB->betx,
+bety=tw_cell_AB->bety,
+dx=tw_cell_AB->dx,
+alfx=-tw_cell_AB->alfx,
+alfy=-tw_cell_AB->alfy,
+dpx=-tw_cell_AB->dpx,
+MUX=0,MUY=0;
+plot,haxis=s,vaxis1=betx,bety,vaxis2=dx,colour=100,
+noversion,title='LSS-B+DS tit1',
+FILE="file1";
+};
+!**********************************************************************
+plt_ESS_D(tit1, file1) : macro={
+USE, SEQUENCE=ESS_D_DS;
+TWISS,centre,
+betx=tw_cell_CD->betx,
+bety=tw_cell_CD->bety,
+dx=tw_cell_CD->dx,
+alfx=-tw_cell_CD->alfx,
+alfy=-tw_cell_CD->alfy,
+dpx=-tw_cell_CD->dpx,
+MUX=0,MUY=0;
+plot,haxis=s,vaxis1=betx,bety,vaxis2=dx,colour=100,
+noversion,title='ESS-D+DS tit1',
+FILE="file1";
+};
+!**********************************************************************
+plt_LSS_F(tit1, file1) : macro={
+USE, SEQUENCE=LSS_F_DS;
+TWISS,centre,
+betx=tw_cell_EF->betx,
+bety=tw_cell_EF->bety,
+dx=tw_cell_EF->dx,
+alfx=-tw_cell_EF->alfx,
+alfy=-tw_cell_EF->alfy,
+dpx=-tw_cell_EF->dpx,
+MUX=0,MUY=0;
+plot,haxis=s,vaxis1=betx,bety,vaxis2=dx,colour=100,
+noversion,title='LSS-F+DS tit1',
+FILE="file1";
+};
+!**********************************************************************
+plt_LSS_G(tit1, file1) : macro={
+USE, SEQUENCE=LSS_G_DS;
+TWISS,centre,
+betx=tw_cell_FG->betx,
+bety=tw_cell_FG->bety,
+dx=tw_cell_FG->dx,
+alfx=-tw_cell_FG->alfx,
+alfy=-tw_cell_FG->alfy,
+dpx=-tw_cell_FG->dpx,
+MUX=0,MUY=0;
+plot,haxis=s,vaxis1=betx,bety,vaxis2=dx,colour=100,
+noversion,title='LSS-G+DS tit1',
+FILE="file1";
+};
+!**********************************************************************
+plt_LSS_H(tit1, file1) : macro={
+USE, SEQUENCE=LSS_H_DS;
+TWISS,centre,
+betx=tw_cell_GH->betx,
+bety=tw_cell_GH->bety,
+dx=tw_cell_GH->dx,
+alfx=-tw_cell_GH->alfx,
+alfy=-tw_cell_GH->alfy,
+dpx=-tw_cell_GH->dpx,
+MUX=0,MUY=0;
+plot,haxis=s,vaxis1=betx,bety,vaxis2=dx,colour=100,
+noversion,title='LSS-H+DS tit1',
+FILE="file1";
+};
+!**********************************************************************
+plt_ESS_J(tit1, file1) : macro={
+USE, SEQUENCE=ESS_J_DS;
+TWISS,centre,
+betx=tw_cell_IJ->betx,
+bety=tw_cell_IJ->bety,
+dx=tw_cell_IJ->dx,
+alfx=-tw_cell_IJ->alfx,
+alfy=-tw_cell_IJ->alfy,
+dpx=-tw_cell_IJ->dpx,
+MUX=0,MUY=0;
+plot,haxis=s,vaxis1=betx,bety,vaxis2=dx,colour=100,
+noversion,title='ESS-J+DS tit1',
+FILE="file1";
+};
+!**********************************************************************
+plt_LSS_L(tit1, file1) : macro={
+USE, SEQUENCE=LSS_L_DS;
+TWISS,centre,
+betx=tw_cell_KL->betx,
+bety=tw_cell_KL->bety,
+dx=tw_cell_KL->dx,
+alfx=-tw_cell_KL->alfx,
+alfy=-tw_cell_KL->alfy,
+dpx=-tw_cell_KL->dpx,
+MUX=0,MUY=0;
+plot,haxis=s,vaxis1=betx,bety,vaxis2=dx,colour=100,
+noversion,title='LSS-L+DS tit1',
+FILE="file1";
+};
+!**********************************************************************
+plt_FCC_RING(tit1, file1) : macro={
+USE, SEQUENCE=FCC_RING;
+TWISS,centre, chrom,
+FILE="file1_ring.tfs";
+plot,haxis=s,vaxis1=betx,bety,vaxis2=dx,colour=100,
+noversion,title=tit1,
+FILE="file1";
+};
+!**********************************************************************
+save_strength(file1) : macro={
+OPTION,echo;
+assign,echo=file1.str;
+!**********************************************************************
+Brho=166785.177308;
+value, Kmax;
+value,L_ESS;
+value,L_CELHALF;
+
+value,KQF.H1;
+value,KQD.H1;
+
+value, KQF.LSS.H1,KQD.LSS.H1;
+value, KQF.INJ.H1,KQD.INJ.H1;
+!*************************** SECTION LSS A ****************************
+value, KQT13.LA.H1; GQT13.LA.H1=KQT13.LA.H1*Brho; value, GQT13.LA.H1;
+value, KQT12.LA.H1; GQT12.LA.H1=KQT12.LA.H1*Brho; value, GQT12.LA.H1;
+value, KQTL11.LA.H1; GQTL11.LA.H1=KQTL11.LA.H1*Brho; value, GQTL11.LA.H1;
+value, KQ10.LA.H1; GQ10.LA.H1=KQ10.LA.H1*Brho; value, GQ10.LA.H1;
+value, KQ9.LA.H1; GQ9.LA.H1=KQ9.LA.H1*Brho; value, GQ9.LA.H1;
+value, KQ8.LA.H1; GQ8.LA.H1=KQ8.LA.H1*Brho; value, GQ8.LA.H1;
+value, K1_MQXC.1L; G1_MQXC.1L=K1_MQXC.1L*Brho; value, G1_MQXC.1L;
+value, K1_MQXD.B2L; G1_MQXD.B2L=K1_MQXD.B2L*Brho; value, G1_MQXD.B2L;
+value, K1_MQXC.3L; G1_MQXC.3L=K1_MQXC.3L*Brho; value, G1_MQXC.3L;
+value, K1_MQXC.1R; G1_MQXC.1R=K1_MQXC.1R*Brho; value, G1_MQXC.1R;
+value, K1_MQXD.B2R; G1_MQXD.B2R=K1_MQXD.B2R*Brho; value, G1_MQXD.B2R;
+value, K1_MQXC.3R; G1_MQXC.3R=K1_MQXC.3R*Brho; value, G1_MQXC.3R;
+value, K1_MQYY.4R.H1; G1_MQYY.4R.H1=K1_MQYY.4R.H1*Brho; value, G1_MQYY.4R.H1;
+value, K1_MQYL.5R.H1; G1_MQYL.5R.H1=K1_MQYL.5R.H1*Brho; value, G1_MQYL.5R.H1;
+value, K1_MQML.6R.H1; G1_MQML.6R.H1=K1_MQML.6R.H1*Brho; value, G1_MQML.6R.H1;
+value, K1_MQM.7R.H1; G1_MQM.7R.H1=K1_MQM.7R.H1*Brho; value, G1_MQM.7R.H1;
+value, K1_MQYY.4L.H1; G1_MQYY.4L.H1=K1_MQYY.4L.H1*Brho; value, G1_MQYY.4L.H1;
+value, K1_MQYL.5L.H1; G1_MQYL.5L.H1=K1_MQYL.5L.H1*Brho; value, G1_MQYL.5L.H1;
+value, K1_MQML.6L.H1; G1_MQML.6L.H1=K1_MQML.6L.H1*Brho; value, G1_MQML.6L.H1;
+value, K1_MQM.7L.H1; G1_MQM.7L.H1=K1_MQM.7L.H1*Brho; value, G1_MQM.7L.H1;
+value, KQ8.RA.H1; GQ8.RA.H1=KQ8.RA.H1*Brho; value, GQ8.RA.H1;
+value, KQ9.RA.H1; GQ9.RA.H1=KQ9.RA.H1*Brho; value, GQ9.RA.H1;
+value, KQ10.RA.H1; GQ10.RA.H1=KQ10.RA.H1*Brho; value, GQ10.RA.H1;
+value, KQTL11.RA.H1; GQTL11.RA.H1=KQTL11.RA.H1*Brho; value, GQTL11.RA.H1;
+value, KQT12.RA.H1; GQT12.RA.H1=KQT12.RA.H1*Brho; value, GQT12.RA.H1;
+value, KQT13.RA.H1; GQT13.RA.H1=KQT13.RA.H1*Brho; value, GQT13.RA.H1;
+
+betx_IPA=tw_IP_A->betx;
+bety_IPA=tw_IP_A->bety;
+alfx_IPA=tw_IP_A->alfx;
+alfy_IPA=tw_IP_A->alfy;
+dx_IPA=tw_IP_A->dx;
+dpx_IPA=tw_IP_A->dpx;
+value,betx_IPA,bety_IPA,alfx_IPA,alfy_IPA,dx_IPA,dpx_IPA;
+!*************************** SECTION LSS B ****************************
+value, KQT13.LB.H1; GQT13.LB.H1=KQT13.LB.H1*Brho; value, GQT13.LB.H1;
+value, KQT12.LB.H1; GQT12.LB.H1=KQT12.LB.H1*Brho; value, GQT12.LB.H1;
+value, KQTL11.LB.H1; GQTL11.LB.H1=KQTL11.LB.H1*Brho; value, GQTL11.LB.H1;
+value, KQ10.LB.H1; GQ10.LB.H1=KQ10.LB.H1*Brho; value, GQ10.LB.H1;
+value, KQ9.LB.H1; GQ9.LB.H1=KQ9.LB.H1*Brho; value, GQ9.LB.H1;
+value, KQ8.LB.H1; GQ8.LB.H1=KQ8.LB.H1*Brho; value, GQ8.LB.H1;
+value, KQ7.LB.H1; GQ7.LB.H1=KQ7.LB.H1*Brho; value, GQ7.LB.H1;
+value, KQ6.LB.H1; GQ6.LB.H1=KQ6.LB.H1*Brho; value, GQ6.LB.H1;
+value, KQ5.LB.H1; GQ5.LB.H1=KQ5.LB.H1*Brho; value, GQ5.LB.H1;
+value, KQ4.LB.H1; GQ4.LB.H1=KQ4.LB.H1*Brho; value, GQ4.LB.H1;
+value, KQ4.RB.H1; GQ4.RB.H1=KQ4.RB.H1*Brho; value, GQ4.RB.H1;
+value, KQ5.RB.H1; GQ5.RB.H1=KQ5.RB.H1*Brho; value, GQ5.RB.H1;
+value, KQ6.RB.H1; GQ6.RB.H1=KQ6.RB.H1*Brho; value, GQ6.RB.H1;
+value, KQ7.RB.H1; GQ7.RB.H1=KQ7.RB.H1*Brho; value, GQ7.RB.H1;
+value, KQ8.RB.H1; GQ8.RB.H1=KQ8.RB.H1*Brho; value, GQ8.RB.H1;
+value, KQ9.RB.H1; GQ9.RB.H1=KQ9.RB.H1*Brho; value, GQ9.RB.H1;
+value, KQ10.RB.H1; GQ10.RB.H1=KQ10.RB.H1*Brho; value, GQ10.RB.H1;
+value, KQTL11.RB.H1; GQTL11.RB.H1=KQTL11.RB.H1*Brho; value, GQTL11.RB.H1;
+value, KQT12.RB.H1; GQT12.RB.H1=KQT12.RB.H1*Brho; value, GQT12.RB.H1;
+value, KQT13.RB.H1; GQT13.RB.H1=KQT13.RB.H1*Brho; value, GQT13.RB.H1;
+
+betx_IPB=tw_IP_B->betx;
+bety_IPB=tw_IP_B->bety;
+alfx_IPB=tw_IP_B->alfx;
+alfy_IPB=tw_IP_B->alfy;
+dx_IPB=tw_IP_B->dx;
+dpx_IPB=tw_IP_B->dpx;
+value,betx_IPB,bety_IPB,alfx_IPB,alfy_IPB,dx_IPB,dpx_IPB;
+!*************************** SECTION ESS D ****************************
+value, KQT13.LD.H1; GQT13.LD.H1=KQT13.LD.H1*Brho; value, GQT13.LD.H1;
+value, KQT12.LD.H1; GQT12.LD.H1=KQT12.LD.H1*Brho; value, GQT12.LD.H1;
+value, KQTL11.LD.H1; GQTL11.LD.H1=KQTL11.LD.H1*Brho; value, GQTL11.LD.H1;
+value, KQ10.LD.H1; GQ10.LD.H1=KQ10.LD.H1*Brho; value, GQ10.LD.H1;
+value, KQ9.LD.H1; GQ9.LD.H1=KQ9.LD.H1*Brho; value, GQ9.LD.H1;
+value, KQ8.LD.H1; GQ8.LD.H1=KQ8.LD.H1*Brho; value, GQ8.LD.H1;
+value, KQ7.LD.H1; GQ7.LD.H1=KQ7.LD.H1*Brho; value, GQ7.LD.H1;
+value, KQ6.LD.H1; GQ6.LD.H1=KQ6.LD.H1*Brho; value, GQ6.LD.H1;
+value, KQ5.LD.H1; GQ5.LD.H1=KQ5.LD.H1*Brho; value, GQ5.LD.H1;
+value, KQ4.LD.H1; GQ4.LD.H1=KQ4.LD.H1*Brho; value, GQ4.LD.H1;
+value, KQ4.RD.H1; GQ4.RD.H1=KQ4.RD.H1*Brho; value, GQ4.RD.H1;
+value, KQ5.RD.H1; GQ5.RD.H1=KQ5.RD.H1*Brho; value, GQ5.RD.H1;
+value, KQ6.RD.H1; GQ6.RD.H1=KQ6.RD.H1*Brho; value, GQ6.RD.H1;
+value, KQ7.RD.H1; GQ7.RD.H1=KQ7.RD.H1*Brho; value, GQ7.RD.H1;
+value, KQ8.RD.H1; GQ8.RD.H1=KQ8.RD.H1*Brho; value, GQ8.RD.H1;
+value, KQ9.RD.H1; GQ9.RD.H1=KQ9.RD.H1*Brho; value, GQ9.RD.H1;
+value, KQ10.RD.H1; GQ10.RD.H1=KQ10.RD.H1*Brho; value, GQ10.RD.H1;
+value, KQTL11.RD.H1; GQTL11.RD.H1=KQTL11.RD.H1*Brho; value, GQTL11.RD.H1;
+value, KQT12.RD.H1; GQT12.RD.H1=KQT12.RD.H1*Brho; value, GQT12.RD.H1;
+value, KQT13.RD.H1; GQT13.RD.H1=KQT13.RD.H1*Brho; value, GQT13.RD.H1;
+
+betx_IPD=tw_IP_D->betx;
+bety_IPD=tw_IP_D->bety;
+alfx_IPD=tw_IP_D->alfx;
+alfy_IPD=tw_IP_D->alfy;
+dx_IPD=tw_IP_D->dx;
+dpx_IPD=tw_IP_D->dpx;
+value,betx_IPD,bety_IPD,alfx_IPD,alfy_IPD,dx_IPD,dpx_IPD;
+!*************************** SECTION LSS F ****************************
+value, KQT13.LF.H1; GQT13.LF.H1=KQT13.LF.H1*Brho; value, GQT13.LF.H1;
+value, KQT12.LF.H1; GQT12.LF.H1=KQT12.LF.H1*Brho; value, GQT12.LF.H1;
+value, KQTL11.LF.H1; GQTL11.LF.H1=KQTL11.LF.H1*Brho; value, GQTL11.LF.H1;
+value, KQ10.LF.H1; GQ10.LF.H1=KQ10.LF.H1*Brho; value, GQ10.LF.H1;
+value, KQ9.LF.H1; GQ9.LF.H1=KQ9.LF.H1*Brho; value, GQ9.LF.H1;
+value, KQ8.LF.H1; GQ8.LF.H1=KQ8.LF.H1*Brho; value, GQ8.LF.H1;
+value, KQ7.LF.H1; GQ7.LF.H1=KQ7.LF.H1*Brho; value, GQ7.LF.H1;
+value, KQ6.LF.H1; GQ6.LF.H1=KQ6.LF.H1*Brho; value, GQ6.LF.H1;
+value, KQ5.LF.H1; GQ5.LF.H1=KQ5.LF.H1*Brho; value, GQ5.LF.H1;
+value, KQ4.LF.H1; GQ4.LF.H1=KQ4.LF.H1*Brho; value, GQ4.LF.H1;
+value, KQ4.RF.H1; GQ4.RF.H1=KQ4.RF.H1*Brho; value, GQ4.RF.H1;
+value, KQ5.RF.H1; GQ5.RF.H1=KQ5.RF.H1*Brho; value, GQ5.RF.H1;
+value, KQ6.RF.H1; GQ6.RF.H1=KQ6.RF.H1*Brho; value, GQ6.RF.H1;
+value, KQ7.RF.H1; GQ7.RF.H1=KQ7.RF.H1*Brho; value, GQ7.RF.H1;
+value, KQ8.RF.H1; GQ8.RF.H1=KQ8.RF.H1*Brho; value, GQ8.RF.H1;
+value, KQ9.RF.H1; GQ9.RF.H1=KQ9.RF.H1*Brho; value, GQ9.RF.H1;
+value, KQ10.RF.H1; GQ10.RF.H1=KQ10.RF.H1*Brho; value, GQ10.RF.H1;
+value, KQTL11.RF.H1; GQTL11.RF.H1=KQTL11.RF.H1*Brho; value, GQTL11.RF.H1;
+value, KQT12.RF.H1; GQT12.RF.H1=KQT12.RF.H1*Brho; value, GQT12.RF.H1;
+value, KQT13.RF.H1; GQT13.RF.H1=KQT13.RF.H1*Brho; value, GQT13.RF.H1;
+
+betx_IPF=tw_IP_F->betx;
+bety_IPF=tw_IP_F->bety;
+alfx_IPF=tw_IP_F->alfx;
+alfy_IPF=tw_IP_F->alfy;
+dx_IPF=tw_IP_F->dx;
+dpx_IPF=tw_IP_F->dpx;
+value,betx_IPF,bety_IPF,alfx_IPF,alfy_IPF,dx_IPF,dpx_IPF;
+!*************************** SECTION LSS G ****************************
+
+print, text ="KQT13.LG.H1:=KQT13.LA.H1;";
+print, text ="KQT12.LG.H1:=KQT12.LA.H1;";
+print, text ="KQTL11.LG.H1:=KQTL11.LA.H1;";
+print, text ="KQ10.LG.H1:=KQ10.LA.H1;";
+print, text ="KQ9.LG.H1:=KQ9.LA.H1;";
+print, text ="KQ8.LG.H1:=KQ8.LA.H1;";
+print, text ="KQ8.RG.H1:=KQ8.RA.H1;";
+print, text ="KQ9.RG.H1:=KQ9.RA.H1;";
+print, text ="KQ10.RG.H1:=KQ10.RA.H1;";
+print, text ="KQTL11.RG.H1:=KQTL11.RA.H1;";
+print, text ="KQT12.RG.H1:=KQT12.RA.H1;";
+print, text ="KQT13.RG.H1:=KQT13.RA.H1;";
+
+
+betx_IPG=tw_IP_G->betx;
+bety_IPG=tw_IP_G->bety;
+alfx_IPG=tw_IP_G->alfx;
+alfy_IPG=tw_IP_G->alfy;
+dx_IPG=tw_IP_G->dx;
+dpx_IPG=tw_IP_G->dpx;
+value,betx_IPG,bety_IPG,alfx_IPG,alfy_IPG,dx_IPG,dpx_IPG;
+!*************************** SECTION LSS H ****************************
+
+print, text ="KQT13.LH.H1:=KQT13.LF.H1;";
+print, text ="KQT12.LH.H1:=KQT12.LF.H1;";
+print, text ="KQTL11.LH.H1:=KQTL11.LF.H1;";
+print, text ="KQ10.LH.H1:=KQ10.LF.H1;";
+print, text ="KQ9.LH.H1:=KQ9.LF.H1;";
+print, text ="KQ8.LH.H1:=KQ8.LF.H1;";
+print, text ="KQ7.LH.H1:=KQ7.LF.H1;";
+print, text ="KQ6.LH.H1:=KQ6.LF.H1;";
+print, text ="KQ5.LH.H1:=KQ5.LF.H1;";
+print, text ="KQ4.LH.H1:=KQ4.LF.H1;";
+
+print, text ="KQ4.RH.H1:=KQ4.RF.H1;";
+print, text ="KQ5.RH.H1:=KQ5.RF.H1;";
+print, text ="KQ6.RH.H1:=KQ6.RF.H1;";
+print, text ="KQ7.RH.H1:=KQ7.RF.H1;";
+print, text ="KQ8.RH.H1:=KQ8.RF.H1;";
+print, text ="KQ9.RH.H1:=KQ9.RF.H1;";
+print, text ="KQ10.RH.H1:=KQ10.RF.H1;";
+print, text ="KQTL11.RH.H1:=KQTL11.RF.H1;";
+print, text ="KQT12.RH.H1:=KQT12.RF.H1;";
+print, text ="KQT13.RH.H1:=KQT13.RF.H1;";
+
+
+betx_IPH=tw_IP_H->betx;
+bety_IPH=tw_IP_H->bety;
+alfx_IPH=tw_IP_H->alfx;
+alfy_IPH=tw_IP_H->alfy;
+dx_IPH=tw_IP_H->dx;
+dpx_IPH=tw_IP_H->dpx;
+value,betx_IPH,bety_IPH,alfx_IPH,alfy_IPH,dx_IPH,dpx_IPH;
+!*************************** SECTION ESS J ****************************
+
+print, text ="KQT13.LJ.H1:=KQT13.LD.H1;";
+print, text ="KQT12.LJ.H1:=KQT12.LD.H1;";
+print, text ="KQTL11.LJ.H1:=KQTL11.LD.H1;";
+print, text ="KQ10.LJ.H1:=KQ10.LD.H1;";
+print, text ="KQ9.LJ.H1:=KQ9.LD.H1;";
+print, text ="KQ8.LJ.H1:=KQ8.LD.H1;";
+print, text ="KQ7.LJ.H1:=KQ7.LD.H1;";
+print, text ="KQ6.LJ.H1:=KQ6.LD.H1;";
+print, text ="KQ5.LJ.H1:=KQ5.LD.H1;";
+print, text ="KQ4.LJ.H1:=KQ4.LD.H1;";
+
+print, text ="KQ4.RJ.H1:=KQ4.RD.H1;";
+print, text ="KQ5.RJ.H1:=KQ5.RD.H1;";
+print, text ="KQ6.RJ.H1:=KQ6.RD.H1;";
+print, text ="KQ7.RJ.H1:=KQ7.RD.H1;";
+print, text ="KQ8.RJ.H1:=KQ8.RD.H1;";
+print, text ="KQ9.RJ.H1:=KQ9.RD.H1;";
+print, text ="KQ10.RJ.H1:=KQ10.RD.H1;";
+print, text ="KQTL11.RJ.H1:=KQTL11.RD.H1;";
+print, text ="KQT12.RJ.H1:=KQT12.RD.H1;";
+print, text ="KQT13.RJ.H1:=KQT13.RD.H1;";
+
+
+betx_IPJ=tw_IP_J->betx;
+bety_IPJ=tw_IP_J->bety;
+alfx_IPJ=tw_IP_J->alfx;
+alfy_IPJ=tw_IP_J->alfy;
+dx_IPJ=tw_IP_J->dx;
+dpx_IPJ=tw_IP_J->dpx;
+value,betx_IPJ,bety_IPJ,alfx_IPJ,alfy_IPJ,dx_IPJ,dpx_IPJ;
+!*************************** SECTION LSS L ****************************
+
+print, text ="KQT13.LL.H1:=KQT13.LB.H1;";
+print, text ="KQT12.LL.H1:=KQT12.LB.H1;";
+print, text ="KQTL11.LL.H1:=KQTL11.LB.H1;";
+print, text ="KQ10.LL.H1:=KQ10.LB.H1;";
+print, text ="KQ9.LL.H1:=KQ9.LB.H1;";
+print, text ="KQ8.LL.H1:=KQ8.LB.H1;";
+print, text ="KQ7.LL.H1:=KQ7.LB.H1;";
+print, text ="KQ6.LL.H1:=KQ6.LB.H1;";
+print, text ="KQ5.LL.H1:=KQ5.LB.H1;";
+print, text ="KQ4.LL.H1:=KQ4.LB.H1;";
+
+print, text ="KQ4.RL.H1:=KQ4.RB.H1;";
+print, text ="KQ5.RL.H1:=KQ5.RB.H1;";
+print, text ="KQ6.RL.H1:=KQ6.RB.H1;";
+print, text ="KQ7.RL.H1:=KQ7.RB.H1;";
+print, text ="KQ8.RL.H1:=KQ8.RB.H1;";
+print, text ="KQ9.RL.H1:=KQ9.RB.H1;";
+print, text ="KQ10.RL.H1:=KQ10.RB.H1;";
+print, text ="KQTL11.RL.H1:=KQTL11.RB.H1;";
+print, text ="KQT12.RL.H1:=KQT12.RB.H1;";
+print, text ="KQT13.RL.H1:=KQT13.RB.H1;";
+
+
+betx_IPL=tw_IP_L->betx;
+bety_IPL=tw_IP_L->bety;
+alfx_IPL=tw_IP_L->alfx;
+alfy_IPL=tw_IP_L->alfy;
+dx_IPL=tw_IP_L->dx;
+dpx_IPL=tw_IP_L->dpx;
+value,betx_IPL,bety_IPL,alfx_IPL,alfy_IPL,dx_IPL,dpx_IPL;
+print, text="K1SF.LA.H1:=KSF.H1;";
+print, text="K2SF.LA.H1:=KSF.H1;";
+print, text="K1SD.LA.H1:=KSD.H1;";
+print, text="K2SD.LA.H1:=KSD.H1;";
+
+print, text="K1SF.RA.H1:=KSF.H1;";
+print, text="K2SF.RA.H1:=KSF.H1;";
+print, text="K1SD.RA.H1:=KSD.H1;";
+print, text="K2SD.RA.H1:=KSD.H1;";
+
+print, text="K1SF.LB.H1:=KSF.H1;";
+print, text="K2SF.LB.H1:=KSF.H1;";
+print, text="K1SD.LB.H1:=KSD.H1;";
+print, text="K2SD.LB.H1:=KSD.H1;";
+
+print, text="K1SF.RB.H1:=KSF.H1;";
+print, text="K2SF.RB.H1:=KSF.H1;";
+print, text="K1SD.RB.H1:=KSD.H1;";
+print, text="K2SD.RB.H1:=KSD.H1;";
+
+print, text="K1SF.LD.H1:=KSF.H1;";
+print, text="K2SF.LD.H1:=KSF.H1;";
+print, text="K1SD.LD.H1:=KSD.H1;";
+print, text="K2SD.LD.H1:=KSD.H1;";
+
+print, text="K1SF.RD.H1:=KSF.H1;";
+print, text="K2SF.RD.H1:=KSF.H1;";
+print, text="K1SD.RD.H1:=KSD.H1;";
+print, text="K2SD.RD.H1:=KSD.H1;";
+
+print, text="K1SF.LF.H1:=KSF.H1;";
+print, text="K2SF.LF.H1:=KSF.H1;";
+print, text="K1SD.LF.H1:=KSD.H1;";
+print, text="K2SD.LF.H1:=KSD.H1;";
+
+print, text="K1SF.RF.H1:=KSF.H1;";
+print, text="K2SF.RF.H1:=KSF.H1;";
+print, text="K1SD.RF.H1:=KSD.H1;";
+print, text="K2SD.RF.H1:=KSD.H1;";
+
+print, text="K1SF.LG.H1:=KSF.H1;";
+print, text="K2SF.LG.H1:=KSF.H1;";
+print, text="K1SD.LG.H1:=KSD.H1;";
+print, text="K2SD.LG.H1:=KSD.H1;";
+
+print, text="K1SF.RG.H1:=KSF.H1;";
+print, text="K2SF.RG.H1:=KSF.H1;";
+print, text="K1SD.RG.H1:=KSD.H1;";
+print, text="K2SD.RG.H1:=KSD.H1;";
+
+print, text="K1SF.LH.H1:=KSF.H1;";
+print, text="K2SF.LH.H1:=KSF.H1;";
+print, text="K1SD.LH.H1:=KSD.H1;";
+print, text="K2SD.LH.H1:=KSD.H1;";
+
+print, text="K1SF.RH.H1:=KSF.H1;";
+print, text="K2SF.RH.H1:=KSF.H1;";
+print, text="K1SD.RH.H1:=KSD.H1;";
+print, text="K2SD.RH.H1:=KSD.H1;";
+
+print, text="K1SF.LJ.H1:=KSF.H1;";
+print, text="K2SF.LJ.H1:=KSF.H1;";
+print, text="K1SD.LJ.H1:=KSD.H1;";
+print, text="K2SD.LJ.H1:=KSD.H1;";
+
+print, text="K1SF.RJ.H1:=KSF.H1;";
+print, text="K2SF.RJ.H1:=KSF.H1;";
+print, text="K1SD.RJ.H1:=KSD.H1;";
+print, text="K2SD.RJ.H1:=KSD.H1;";
+
+print, text="K1SF.LL.H1:=KSF.H1;";
+print, text="K2SF.LL.H1:=KSF.H1;";
+print, text="K1SD.LL.H1:=KSD.H1;";
+print, text="K2SD.LL.H1:=KSD.H1;";
+
+print, text="K1SF.RL.H1:=KSF.H1;";
+print, text="K2SF.RL.H1:=KSF.H1;";
+print, text="K1SD.RL.H1:=KSD.H1;";
+print, text="K2SD.RL.H1:=KSD.H1;";
+
+value, KSF.H1, KSD.H1;
+assign,echo=terminal;
+}
